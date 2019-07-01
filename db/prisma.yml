@@ -1,0 +1,10 @@
+# endpoint of the database
+endpoint: http://localhost:4466
+# location GraphQL SDL-based datamodel (foundation for database)
+datamodel: datamodel.prisma
+generate:
+  - generator: typescript-client
+    output: ../db-client/generated/prisma-client
+hooks:
+  post-deploy:
+    - npx nexus-prisma-generate --client ../db-client/generated/prisma-client --output ../db-client/generated/nexus-prisma

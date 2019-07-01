@@ -1,0 +1,33 @@
+type User {
+  id: ID! @id
+  name: String!
+  watched: [WatchedEpisode!]!
+}
+
+type WatchedEpisode {
+  id: ID! @id
+  episode: Episode!
+  user: User! @relation(link: INLINE)
+  watched: Boolean! @default(value: false)
+}
+
+type Episode {
+  id: ID! @id
+  name: String
+  number: Int!
+  release: DateTime
+  season: Season! @relation(link: INLINE)
+}
+
+type Season {
+  id: ID! @id
+  number: Int!
+  episodes: [Episode!]!
+  series: Series! @relation(link: INLINE)
+}
+
+type Series {
+  id: ID! @id
+  name: String!
+  seasons: [Season!]!
+}

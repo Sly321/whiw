@@ -17,9 +17,10 @@ export interface NexusPrismaTypes {
       Query: QueryObject
       User: UserObject
       WatchedEpisode: WatchedEpisodeObject
-      Episode: EpisodeObject
-      Season: SeasonObject
+      UserSeries: UserSeriesObject
       Series: SeriesObject
+      Season: SeasonObject
+      Episode: EpisodeObject
       UserConnection: UserConnectionObject
       PageInfo: PageInfoObject
       UserEdge: UserEdgeObject
@@ -27,6 +28,9 @@ export interface NexusPrismaTypes {
       WatchedEpisodeConnection: WatchedEpisodeConnectionObject
       WatchedEpisodeEdge: WatchedEpisodeEdgeObject
       AggregateWatchedEpisode: AggregateWatchedEpisodeObject
+      UserSeriesConnection: UserSeriesConnectionObject
+      UserSeriesEdge: UserSeriesEdgeObject
+      AggregateUserSeries: AggregateUserSeriesObject
       EpisodeConnection: EpisodeConnectionObject
       EpisodeEdge: EpisodeEdgeObject
       AggregateEpisode: AggregateEpisodeObject
@@ -43,6 +47,8 @@ export interface NexusPrismaTypes {
       UserPreviousValues: UserPreviousValuesObject
       WatchedEpisodeSubscriptionPayload: WatchedEpisodeSubscriptionPayloadObject
       WatchedEpisodePreviousValues: WatchedEpisodePreviousValuesObject
+      UserSeriesSubscriptionPayload: UserSeriesSubscriptionPayloadObject
+      UserSeriesPreviousValues: UserSeriesPreviousValuesObject
       EpisodeSubscriptionPayload: EpisodeSubscriptionPayloadObject
       EpisodePreviousValues: EpisodePreviousValuesObject
       SeasonSubscriptionPayload: SeasonSubscriptionPayloadObject
@@ -54,9 +60,10 @@ export interface NexusPrismaTypes {
       Query: QueryFieldDetails
       User: UserFieldDetails
       WatchedEpisode: WatchedEpisodeFieldDetails
-      Episode: EpisodeFieldDetails
-      Season: SeasonFieldDetails
+      UserSeries: UserSeriesFieldDetails
       Series: SeriesFieldDetails
+      Season: SeasonFieldDetails
+      Episode: EpisodeFieldDetails
       UserConnection: UserConnectionFieldDetails
       PageInfo: PageInfoFieldDetails
       UserEdge: UserEdgeFieldDetails
@@ -64,6 +71,9 @@ export interface NexusPrismaTypes {
       WatchedEpisodeConnection: WatchedEpisodeConnectionFieldDetails
       WatchedEpisodeEdge: WatchedEpisodeEdgeFieldDetails
       AggregateWatchedEpisode: AggregateWatchedEpisodeFieldDetails
+      UserSeriesConnection: UserSeriesConnectionFieldDetails
+      UserSeriesEdge: UserSeriesEdgeFieldDetails
+      AggregateUserSeries: AggregateUserSeriesFieldDetails
       EpisodeConnection: EpisodeConnectionFieldDetails
       EpisodeEdge: EpisodeEdgeFieldDetails
       AggregateEpisode: AggregateEpisodeFieldDetails
@@ -80,6 +90,8 @@ export interface NexusPrismaTypes {
       UserPreviousValues: UserPreviousValuesFieldDetails
       WatchedEpisodeSubscriptionPayload: WatchedEpisodeSubscriptionPayloadFieldDetails
       WatchedEpisodePreviousValues: WatchedEpisodePreviousValuesFieldDetails
+      UserSeriesSubscriptionPayload: UserSeriesSubscriptionPayloadFieldDetails
+      UserSeriesPreviousValues: UserSeriesPreviousValuesFieldDetails
       EpisodeSubscriptionPayload: EpisodeSubscriptionPayloadFieldDetails
       EpisodePreviousValues: EpisodePreviousValuesFieldDetails
       SeasonSubscriptionPayload: SeasonSubscriptionPayloadFieldDetails
@@ -92,17 +104,28 @@ export interface NexusPrismaTypes {
     fields: {
       UserWhereUniqueInput: UserWhereUniqueInputInputObject
       WatchedEpisodeWhereInput: WatchedEpisodeWhereInputInputObject
-      EpisodeWhereInput: EpisodeWhereInputInputObject
-      SeasonWhereInput: SeasonWhereInputInputObject
-      SeriesWhereInput: SeriesWhereInputInputObject
+      UserSeriesWhereInput: UserSeriesWhereInputInputObject
       UserWhereInput: UserWhereInputInputObject
+      SeriesWhereInput: SeriesWhereInputInputObject
+      SeasonWhereInput: SeasonWhereInputInputObject
+      EpisodeWhereInput: EpisodeWhereInputInputObject
       WatchedEpisodeWhereUniqueInput: WatchedEpisodeWhereUniqueInputInputObject
+      UserSeriesWhereUniqueInput: UserSeriesWhereUniqueInputInputObject
       EpisodeWhereUniqueInput: EpisodeWhereUniqueInputInputObject
       SeasonWhereUniqueInput: SeasonWhereUniqueInputInputObject
       SeriesWhereUniqueInput: SeriesWhereUniqueInputInputObject
       UserCreateInput: UserCreateInputInputObject
-      WatchedEpisodeCreateManyWithoutUserInput: WatchedEpisodeCreateManyWithoutUserInputInputObject
-      WatchedEpisodeCreateWithoutUserInput: WatchedEpisodeCreateWithoutUserInputInputObject
+      WatchedEpisodeCreateManyInput: WatchedEpisodeCreateManyInputInputObject
+      WatchedEpisodeCreateInput: WatchedEpisodeCreateInputInputObject
+      UserSeriesCreateOneInput: UserSeriesCreateOneInputInputObject
+      UserSeriesCreateInput: UserSeriesCreateInputInputObject
+      UserCreateOneInput: UserCreateOneInputInputObject
+      SeriesCreateOneInput: SeriesCreateOneInputInputObject
+      SeriesCreateInput: SeriesCreateInputInputObject
+      SeasonCreateManyWithoutSeriesInput: SeasonCreateManyWithoutSeriesInputInputObject
+      SeasonCreateWithoutSeriesInput: SeasonCreateWithoutSeriesInputInputObject
+      EpisodeCreateManyWithoutSeasonInput: EpisodeCreateManyWithoutSeasonInputInputObject
+      EpisodeCreateWithoutSeasonInput: EpisodeCreateWithoutSeasonInputInputObject
       EpisodeCreateOneInput: EpisodeCreateOneInputInputObject
       EpisodeCreateInput: EpisodeCreateInputInputObject
       SeasonCreateOneWithoutEpisodesInput: SeasonCreateOneWithoutEpisodesInputInputObject
@@ -110,9 +133,32 @@ export interface NexusPrismaTypes {
       SeriesCreateOneWithoutSeasonsInput: SeriesCreateOneWithoutSeasonsInputInputObject
       SeriesCreateWithoutSeasonsInput: SeriesCreateWithoutSeasonsInputInputObject
       UserUpdateInput: UserUpdateInputInputObject
-      WatchedEpisodeUpdateManyWithoutUserInput: WatchedEpisodeUpdateManyWithoutUserInputInputObject
-      WatchedEpisodeUpdateWithWhereUniqueWithoutUserInput: WatchedEpisodeUpdateWithWhereUniqueWithoutUserInputInputObject
-      WatchedEpisodeUpdateWithoutUserDataInput: WatchedEpisodeUpdateWithoutUserDataInputInputObject
+      WatchedEpisodeUpdateManyInput: WatchedEpisodeUpdateManyInputInputObject
+      WatchedEpisodeUpdateWithWhereUniqueNestedInput: WatchedEpisodeUpdateWithWhereUniqueNestedInputInputObject
+      WatchedEpisodeUpdateDataInput: WatchedEpisodeUpdateDataInputInputObject
+      UserSeriesUpdateOneRequiredInput: UserSeriesUpdateOneRequiredInputInputObject
+      UserSeriesUpdateDataInput: UserSeriesUpdateDataInputInputObject
+      UserUpdateOneRequiredInput: UserUpdateOneRequiredInputInputObject
+      UserUpdateDataInput: UserUpdateDataInputInputObject
+      UserUpsertNestedInput: UserUpsertNestedInputInputObject
+      SeriesUpdateOneRequiredInput: SeriesUpdateOneRequiredInputInputObject
+      SeriesUpdateDataInput: SeriesUpdateDataInputInputObject
+      SeasonUpdateManyWithoutSeriesInput: SeasonUpdateManyWithoutSeriesInputInputObject
+      SeasonUpdateWithWhereUniqueWithoutSeriesInput: SeasonUpdateWithWhereUniqueWithoutSeriesInputInputObject
+      SeasonUpdateWithoutSeriesDataInput: SeasonUpdateWithoutSeriesDataInputInputObject
+      EpisodeUpdateManyWithoutSeasonInput: EpisodeUpdateManyWithoutSeasonInputInputObject
+      EpisodeUpdateWithWhereUniqueWithoutSeasonInput: EpisodeUpdateWithWhereUniqueWithoutSeasonInputInputObject
+      EpisodeUpdateWithoutSeasonDataInput: EpisodeUpdateWithoutSeasonDataInputInputObject
+      EpisodeUpsertWithWhereUniqueWithoutSeasonInput: EpisodeUpsertWithWhereUniqueWithoutSeasonInputInputObject
+      EpisodeScalarWhereInput: EpisodeScalarWhereInputInputObject
+      EpisodeUpdateManyWithWhereNestedInput: EpisodeUpdateManyWithWhereNestedInputInputObject
+      EpisodeUpdateManyDataInput: EpisodeUpdateManyDataInputInputObject
+      SeasonUpsertWithWhereUniqueWithoutSeriesInput: SeasonUpsertWithWhereUniqueWithoutSeriesInputInputObject
+      SeasonScalarWhereInput: SeasonScalarWhereInputInputObject
+      SeasonUpdateManyWithWhereNestedInput: SeasonUpdateManyWithWhereNestedInputInputObject
+      SeasonUpdateManyDataInput: SeasonUpdateManyDataInputInputObject
+      SeriesUpsertNestedInput: SeriesUpsertNestedInputInputObject
+      UserSeriesUpsertNestedInput: UserSeriesUpsertNestedInputInputObject
       EpisodeUpdateOneRequiredInput: EpisodeUpdateOneRequiredInputInputObject
       EpisodeUpdateDataInput: EpisodeUpdateDataInputInputObject
       SeasonUpdateOneRequiredWithoutEpisodesInput: SeasonUpdateOneRequiredWithoutEpisodesInputInputObject
@@ -122,47 +168,21 @@ export interface NexusPrismaTypes {
       SeriesUpsertWithoutSeasonsInput: SeriesUpsertWithoutSeasonsInputInputObject
       SeasonUpsertWithoutEpisodesInput: SeasonUpsertWithoutEpisodesInputInputObject
       EpisodeUpsertNestedInput: EpisodeUpsertNestedInputInputObject
-      WatchedEpisodeUpsertWithWhereUniqueWithoutUserInput: WatchedEpisodeUpsertWithWhereUniqueWithoutUserInputInputObject
+      WatchedEpisodeUpsertWithWhereUniqueNestedInput: WatchedEpisodeUpsertWithWhereUniqueNestedInputInputObject
       WatchedEpisodeScalarWhereInput: WatchedEpisodeScalarWhereInputInputObject
-      WatchedEpisodeUpdateManyWithWhereNestedInput: WatchedEpisodeUpdateManyWithWhereNestedInputInputObject
-      WatchedEpisodeUpdateManyDataInput: WatchedEpisodeUpdateManyDataInputInputObject
       UserUpdateManyMutationInput: UserUpdateManyMutationInputInputObject
-      WatchedEpisodeCreateInput: WatchedEpisodeCreateInputInputObject
-      UserCreateOneWithoutWatchedInput: UserCreateOneWithoutWatchedInputInputObject
-      UserCreateWithoutWatchedInput: UserCreateWithoutWatchedInputInputObject
       WatchedEpisodeUpdateInput: WatchedEpisodeUpdateInputInputObject
-      UserUpdateOneRequiredWithoutWatchedInput: UserUpdateOneRequiredWithoutWatchedInputInputObject
-      UserUpdateWithoutWatchedDataInput: UserUpdateWithoutWatchedDataInputInputObject
-      UserUpsertWithoutWatchedInput: UserUpsertWithoutWatchedInputInputObject
-      WatchedEpisodeUpdateManyMutationInput: WatchedEpisodeUpdateManyMutationInputInputObject
+      UserSeriesUpdateInput: UserSeriesUpdateInputInputObject
       EpisodeUpdateInput: EpisodeUpdateInputInputObject
       EpisodeUpdateManyMutationInput: EpisodeUpdateManyMutationInputInputObject
       SeasonCreateInput: SeasonCreateInputInputObject
-      EpisodeCreateManyWithoutSeasonInput: EpisodeCreateManyWithoutSeasonInputInputObject
-      EpisodeCreateWithoutSeasonInput: EpisodeCreateWithoutSeasonInputInputObject
       SeasonUpdateInput: SeasonUpdateInputInputObject
-      EpisodeUpdateManyWithoutSeasonInput: EpisodeUpdateManyWithoutSeasonInputInputObject
-      EpisodeUpdateWithWhereUniqueWithoutSeasonInput: EpisodeUpdateWithWhereUniqueWithoutSeasonInputInputObject
-      EpisodeUpdateWithoutSeasonDataInput: EpisodeUpdateWithoutSeasonDataInputInputObject
-      EpisodeUpsertWithWhereUniqueWithoutSeasonInput: EpisodeUpsertWithWhereUniqueWithoutSeasonInputInputObject
-      EpisodeScalarWhereInput: EpisodeScalarWhereInputInputObject
-      EpisodeUpdateManyWithWhereNestedInput: EpisodeUpdateManyWithWhereNestedInputInputObject
-      EpisodeUpdateManyDataInput: EpisodeUpdateManyDataInputInputObject
       SeasonUpdateManyMutationInput: SeasonUpdateManyMutationInputInputObject
-      SeriesCreateInput: SeriesCreateInputInputObject
-      SeasonCreateManyWithoutSeriesInput: SeasonCreateManyWithoutSeriesInputInputObject
-      SeasonCreateWithoutSeriesInput: SeasonCreateWithoutSeriesInputInputObject
       SeriesUpdateInput: SeriesUpdateInputInputObject
-      SeasonUpdateManyWithoutSeriesInput: SeasonUpdateManyWithoutSeriesInputInputObject
-      SeasonUpdateWithWhereUniqueWithoutSeriesInput: SeasonUpdateWithWhereUniqueWithoutSeriesInputInputObject
-      SeasonUpdateWithoutSeriesDataInput: SeasonUpdateWithoutSeriesDataInputInputObject
-      SeasonUpsertWithWhereUniqueWithoutSeriesInput: SeasonUpsertWithWhereUniqueWithoutSeriesInputInputObject
-      SeasonScalarWhereInput: SeasonScalarWhereInputInputObject
-      SeasonUpdateManyWithWhereNestedInput: SeasonUpdateManyWithWhereNestedInputInputObject
-      SeasonUpdateManyDataInput: SeasonUpdateManyDataInputInputObject
       SeriesUpdateManyMutationInput: SeriesUpdateManyMutationInputInputObject
       UserSubscriptionWhereInput: UserSubscriptionWhereInputInputObject
       WatchedEpisodeSubscriptionWhereInput: WatchedEpisodeSubscriptionWhereInputInputObject
+      UserSeriesSubscriptionWhereInput: UserSeriesSubscriptionWhereInputInputObject
       EpisodeSubscriptionWhereInput: EpisodeSubscriptionWhereInputInputObject
       SeasonSubscriptionWhereInput: SeasonSubscriptionWhereInputInputObject
       SeriesSubscriptionWhereInput: SeriesSubscriptionWhereInputInputObject
@@ -170,9 +190,10 @@ export interface NexusPrismaTypes {
   }
   enumTypes: {
     WatchedEpisodeOrderByInput: WatchedEpisodeOrderByInputValues,
-    EpisodeOrderByInput: EpisodeOrderByInputValues,
     SeasonOrderByInput: SeasonOrderByInputValues,
+    EpisodeOrderByInput: EpisodeOrderByInputValues,
     UserOrderByInput: UserOrderByInputValues,
+    UserSeriesOrderByInput: UserSeriesOrderByInputValues,
     SeriesOrderByInput: SeriesOrderByInputValues,
     MutationType: MutationTypeValues,
   }
@@ -188,6 +209,9 @@ type QueryObject =
   | { name: 'watchedEpisode', args?: QueryWatchedEpisodeArgs[] | false, alias?: string  } 
   | { name: 'watchedEpisodes', args?: QueryWatchedEpisodesArgs[] | false, alias?: string  } 
   | { name: 'watchedEpisodesConnection', args?: QueryWatchedEpisodesConnectionArgs[] | false, alias?: string  } 
+  | { name: 'userSeries', args?: QueryUserSeriesArgs[] | false, alias?: string  } 
+  | { name: 'userSerieses', args?: QueryUserSeriesesArgs[] | false, alias?: string  } 
+  | { name: 'userSeriesesConnection', args?: QueryUserSeriesesConnectionArgs[] | false, alias?: string  } 
   | { name: 'episode', args?: QueryEpisodeArgs[] | false, alias?: string  } 
   | { name: 'episodes', args?: QueryEpisodesArgs[] | false, alias?: string  } 
   | { name: 'episodesConnection', args?: QueryEpisodesConnectionArgs[] | false, alias?: string  } 
@@ -205,6 +229,9 @@ type QueryFields =
   | 'watchedEpisode'
   | 'watchedEpisodes'
   | 'watchedEpisodesConnection'
+  | 'userSeries'
+  | 'userSerieses'
+  | 'userSeriesesConnection'
   | 'episode'
   | 'episodes'
   | 'episodesConnection'
@@ -245,6 +272,24 @@ type QueryWatchedEpisodesArgs =
   | 'first'
   | 'last'
 type QueryWatchedEpisodesConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryUserSeriesArgs =
+  | 'where'
+type QueryUserSeriesesArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryUserSeriesesConnectionArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -386,6 +431,45 @@ export interface QueryFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.WatchedEpisodeConnection> | prisma.WatchedEpisodeConnection
+  }
+  userSeries: {
+    type: 'UserSeries'
+    args: Record<QueryUserSeriesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where: UserSeriesWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.UserSeries | null> | prisma.UserSeries | null
+  }
+  userSerieses: {
+    type: 'UserSeries'
+    args: Record<QueryUserSeriesesArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: UserSeriesWhereInput | null, orderBy?: prisma.UserSeriesOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.UserSeries[]> | prisma.UserSeries[]
+  }
+  userSeriesesConnection: {
+    type: 'UserSeriesConnection'
+    args: Record<QueryUserSeriesesConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: UserSeriesWhereInput | null, orderBy?: prisma.UserSeriesOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.UserSeriesConnection> | prisma.UserSeriesConnection
   }
   episode: {
     type: 'Episode'
@@ -569,15 +653,13 @@ export interface UserFieldDetails {
 type WatchedEpisodeObject =
   | WatchedEpisodeFields
   | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'userSeries', args?: [] | false, alias?: string  } 
   | { name: 'episode', args?: [] | false, alias?: string  } 
-  | { name: 'user', args?: [] | false, alias?: string  } 
-  | { name: 'watched', args?: [] | false, alias?: string  } 
 
 type WatchedEpisodeFields =
   | 'id'
+  | 'userSeries'
   | 'episode'
-  | 'user'
-  | 'watched'
 
 
 
@@ -592,6 +674,19 @@ export interface WatchedEpisodeFieldDetails {
     nullable: false
     resolve: undefined
   }
+  userSeries: {
+    type: 'UserSeries'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"WatchedEpisode">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.UserSeries> | prisma.UserSeries
+  }
   episode: {
     type: 'Episode'
     args: {}
@@ -605,6 +700,35 @@ export interface WatchedEpisodeFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Episode> | prisma.Episode
   }
+}
+  
+
+// Types for UserSeries
+
+type UserSeriesObject =
+  | UserSeriesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'user', args?: [] | false, alias?: string  } 
+  | { name: 'series', args?: [] | false, alias?: string  } 
+
+type UserSeriesFields =
+  | 'id'
+  | 'user'
+  | 'series'
+
+
+
+  
+
+export interface UserSeriesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
   user: {
     type: 'User'
     args: {}
@@ -612,45 +736,53 @@ export interface WatchedEpisodeFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"WatchedEpisode">,
+      root: core.RootValue<"UserSeries">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.User> | prisma.User
   }
-  watched: {
-    type: 'Boolean'
+  series: {
+    type: 'Series'
     args: {}
     description: string
     list: undefined
     nullable: false
-    resolve: undefined
+    resolve: (
+      root: core.RootValue<"UserSeries">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Series> | prisma.Series
   }
 }
   
 
-// Types for Episode
+// Types for Series
 
-type EpisodeObject =
-  | EpisodeFields
+type SeriesObject =
+  | SeriesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
-  | { name: 'number', args?: [] | false, alias?: string  } 
-  | { name: 'release', args?: [] | false, alias?: string  } 
-  | { name: 'season', args?: [] | false, alias?: string  } 
+  | { name: 'seasons', args?: SeriesSeasonsArgs[] | false, alias?: string  } 
 
-type EpisodeFields =
+type SeriesFields =
   | 'id'
   | 'name'
-  | 'number'
-  | 'release'
-  | 'season'
+  | 'seasons'
 
 
-
+type SeriesSeasonsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
   
 
-export interface EpisodeFieldDetails {
+export interface SeriesFieldDetails {
   id: {
     type: 'ID'
     args: {}
@@ -664,37 +796,21 @@ export interface EpisodeFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  number: {
-    type: 'Int'
-    args: {}
-    description: string
-    list: undefined
     nullable: false
     resolve: undefined
   }
-  release: {
-    type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  season: {
+  seasons: {
     type: 'Season'
-    args: {}
+    args: Record<SeriesSeasonsArgs, core.NexusArgDef<string>>
     description: string
-    list: undefined
+    list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"Episode">,
-      args: {  }  ,
+      root: core.RootValue<"Series">,
+      args: { where?: SeasonWhereInput | null, orderBy?: prisma.SeasonOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Season> | prisma.Season
+    ) => Promise<prisma.Season[]> | prisma.Season[]
   }
 }
   
@@ -771,31 +887,28 @@ export interface SeasonFieldDetails {
 }
   
 
-// Types for Series
+// Types for Episode
 
-type SeriesObject =
-  | SeriesFields
+type EpisodeObject =
+  | EpisodeFields
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
-  | { name: 'seasons', args?: SeriesSeasonsArgs[] | false, alias?: string  } 
+  | { name: 'number', args?: [] | false, alias?: string  } 
+  | { name: 'release', args?: [] | false, alias?: string  } 
+  | { name: 'season', args?: [] | false, alias?: string  } 
 
-type SeriesFields =
+type EpisodeFields =
   | 'id'
   | 'name'
-  | 'seasons'
+  | 'number'
+  | 'release'
+  | 'season'
 
 
-type SeriesSeasonsArgs =
-  | 'where'
-  | 'orderBy'
-  | 'skip'
-  | 'after'
-  | 'before'
-  | 'first'
-  | 'last'
+
   
 
-export interface SeriesFieldDetails {
+export interface EpisodeFieldDetails {
   id: {
     type: 'ID'
     args: {}
@@ -809,21 +922,37 @@ export interface SeriesFieldDetails {
     args: {}
     description: string
     list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  number: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
     nullable: false
     resolve: undefined
   }
-  seasons: {
-    type: 'Season'
-    args: Record<SeriesSeasonsArgs, core.NexusArgDef<string>>
+  release: {
+    type: 'DateTime'
+    args: {}
     description: string
-    list: true
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  season: {
+    type: 'Season'
+    args: {}
+    description: string
+    list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Series">,
-      args: { where?: SeasonWhereInput | null, orderBy?: prisma.SeasonOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      root: core.RootValue<"Episode">,
+      args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Season[]> | prisma.Season[]
+    ) => Promise<prisma.Season> | prisma.Season
   }
 }
   
@@ -1122,6 +1251,131 @@ type AggregateWatchedEpisodeFields =
   
 
 export interface AggregateWatchedEpisodeFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for UserSeriesConnection
+
+type UserSeriesConnectionObject =
+  | UserSeriesConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type UserSeriesConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface UserSeriesConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"UserSeriesConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'UserSeriesEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"UserSeriesConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.UserSeriesEdge[]> | prisma.UserSeriesEdge[]
+  }
+  aggregate: {
+    type: 'AggregateUserSeries'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"UserSeriesConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregateUserSeries> | prisma.AggregateUserSeries
+  }
+}
+  
+
+// Types for UserSeriesEdge
+
+type UserSeriesEdgeObject =
+  | UserSeriesEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type UserSeriesEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface UserSeriesEdgeFieldDetails {
+  node: {
+    type: 'UserSeries'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"UserSeriesEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.UserSeries> | prisma.UserSeries
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregateUserSeries
+
+type AggregateUserSeriesObject =
+  | AggregateUserSeriesFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregateUserSeriesFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregateUserSeriesFieldDetails {
   count: {
     type: 'Int'
     args: {}
@@ -1520,10 +1774,14 @@ type MutationObject =
   | { name: 'deleteManyUsers', args?: MutationDeleteManyUsersArgs[] | false, alias?: string  } 
   | { name: 'createWatchedEpisode', args?: MutationCreateWatchedEpisodeArgs[] | false, alias?: string  } 
   | { name: 'updateWatchedEpisode', args?: MutationUpdateWatchedEpisodeArgs[] | false, alias?: string  } 
-  | { name: 'updateManyWatchedEpisodes', args?: MutationUpdateManyWatchedEpisodesArgs[] | false, alias?: string  } 
   | { name: 'upsertWatchedEpisode', args?: MutationUpsertWatchedEpisodeArgs[] | false, alias?: string  } 
   | { name: 'deleteWatchedEpisode', args?: MutationDeleteWatchedEpisodeArgs[] | false, alias?: string  } 
   | { name: 'deleteManyWatchedEpisodes', args?: MutationDeleteManyWatchedEpisodesArgs[] | false, alias?: string  } 
+  | { name: 'createUserSeries', args?: MutationCreateUserSeriesArgs[] | false, alias?: string  } 
+  | { name: 'updateUserSeries', args?: MutationUpdateUserSeriesArgs[] | false, alias?: string  } 
+  | { name: 'upsertUserSeries', args?: MutationUpsertUserSeriesArgs[] | false, alias?: string  } 
+  | { name: 'deleteUserSeries', args?: MutationDeleteUserSeriesArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyUserSerieses', args?: MutationDeleteManyUserSeriesesArgs[] | false, alias?: string  } 
   | { name: 'createEpisode', args?: MutationCreateEpisodeArgs[] | false, alias?: string  } 
   | { name: 'updateEpisode', args?: MutationUpdateEpisodeArgs[] | false, alias?: string  } 
   | { name: 'updateManyEpisodes', args?: MutationUpdateManyEpisodesArgs[] | false, alias?: string  } 
@@ -1552,10 +1810,14 @@ type MutationFields =
   | 'deleteManyUsers'
   | 'createWatchedEpisode'
   | 'updateWatchedEpisode'
-  | 'updateManyWatchedEpisodes'
   | 'upsertWatchedEpisode'
   | 'deleteWatchedEpisode'
   | 'deleteManyWatchedEpisodes'
+  | 'createUserSeries'
+  | 'updateUserSeries'
+  | 'upsertUserSeries'
+  | 'deleteUserSeries'
+  | 'deleteManyUserSerieses'
   | 'createEpisode'
   | 'updateEpisode'
   | 'updateManyEpisodes'
@@ -1597,9 +1859,6 @@ type MutationCreateWatchedEpisodeArgs =
 type MutationUpdateWatchedEpisodeArgs =
   | 'data'
   | 'where'
-type MutationUpdateManyWatchedEpisodesArgs =
-  | 'data'
-  | 'where'
 type MutationUpsertWatchedEpisodeArgs =
   | 'where'
   | 'create'
@@ -1607,6 +1866,19 @@ type MutationUpsertWatchedEpisodeArgs =
 type MutationDeleteWatchedEpisodeArgs =
   | 'where'
 type MutationDeleteManyWatchedEpisodesArgs =
+  | 'where'
+type MutationCreateUserSeriesArgs =
+  | 'data'
+type MutationUpdateUserSeriesArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertUserSeriesArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeleteUserSeriesArgs =
+  | 'where'
+type MutationDeleteManyUserSeriesesArgs =
   | 'where'
 type MutationCreateEpisodeArgs =
   | 'data'
@@ -1763,19 +2035,6 @@ export interface MutationFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.WatchedEpisode | null> | prisma.WatchedEpisode | null
   }
-  updateManyWatchedEpisodes: {
-    type: 'BatchPayload'
-    args: Record<MutationUpdateManyWatchedEpisodesArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: WatchedEpisodeUpdateManyMutationInput, where?: WatchedEpisodeWhereInput | null }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
-  }
   upsertWatchedEpisode: {
     type: 'WatchedEpisode'
     args: Record<MutationUpsertWatchedEpisodeArgs, core.NexusArgDef<string>>
@@ -1811,6 +2070,71 @@ export interface MutationFieldDetails {
     resolve: (
       root: core.RootValue<"Mutation">,
       args: { where?: WatchedEpisodeWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  createUserSeries: {
+    type: 'UserSeries'
+    args: Record<MutationCreateUserSeriesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: UserSeriesCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.UserSeries> | prisma.UserSeries
+  }
+  updateUserSeries: {
+    type: 'UserSeries'
+    args: Record<MutationUpdateUserSeriesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: UserSeriesUpdateInput, where: UserSeriesWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.UserSeries | null> | prisma.UserSeries | null
+  }
+  upsertUserSeries: {
+    type: 'UserSeries'
+    args: Record<MutationUpsertUserSeriesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: UserSeriesWhereUniqueInput, create: UserSeriesCreateInput, update: UserSeriesUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.UserSeries> | prisma.UserSeries
+  }
+  deleteUserSeries: {
+    type: 'UserSeries'
+    args: Record<MutationDeleteUserSeriesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: UserSeriesWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.UserSeries | null> | prisma.UserSeries | null
+  }
+  deleteManyUserSerieses: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyUserSeriesesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: UserSeriesWhereInput | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
@@ -2083,6 +2407,7 @@ type SubscriptionObject =
   | SubscriptionFields
   | { name: 'user', args?: SubscriptionUserArgs[] | false, alias?: string  } 
   | { name: 'watchedEpisode', args?: SubscriptionWatchedEpisodeArgs[] | false, alias?: string  } 
+  | { name: 'userSeries', args?: SubscriptionUserSeriesArgs[] | false, alias?: string  } 
   | { name: 'episode', args?: SubscriptionEpisodeArgs[] | false, alias?: string  } 
   | { name: 'season', args?: SubscriptionSeasonArgs[] | false, alias?: string  } 
   | { name: 'series', args?: SubscriptionSeriesArgs[] | false, alias?: string  } 
@@ -2090,6 +2415,7 @@ type SubscriptionObject =
 type SubscriptionFields =
   | 'user'
   | 'watchedEpisode'
+  | 'userSeries'
   | 'episode'
   | 'season'
   | 'series'
@@ -2098,6 +2424,8 @@ type SubscriptionFields =
 type SubscriptionUserArgs =
   | 'where'
 type SubscriptionWatchedEpisodeArgs =
+  | 'where'
+type SubscriptionUserSeriesArgs =
   | 'where'
 type SubscriptionEpisodeArgs =
   | 'where'
@@ -2133,6 +2461,19 @@ export interface SubscriptionFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.WatchedEpisodeSubscriptionPayload | null> | prisma.WatchedEpisodeSubscriptionPayload | null
+  }
+  userSeries: {
+    type: 'UserSeriesSubscriptionPayload'
+    args: Record<SubscriptionUserSeriesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: UserSeriesSubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.UserSeriesSubscriptionPayload | null> | prisma.UserSeriesSubscriptionPayload | null
   }
   episode: {
     type: 'EpisodeSubscriptionPayload'
@@ -2356,11 +2697,9 @@ export interface WatchedEpisodeSubscriptionPayloadFieldDetails {
 type WatchedEpisodePreviousValuesObject =
   | WatchedEpisodePreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'watched', args?: [] | false, alias?: string  } 
 
 type WatchedEpisodePreviousValuesFields =
   | 'id'
-  | 'watched'
 
 
 
@@ -2375,8 +2714,95 @@ export interface WatchedEpisodePreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
-  watched: {
-    type: 'Boolean'
+}
+  
+
+// Types for UserSeriesSubscriptionPayload
+
+type UserSeriesSubscriptionPayloadObject =
+  | UserSeriesSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type UserSeriesSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface UserSeriesSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"UserSeriesSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'UserSeries'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"UserSeriesSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.UserSeries | null> | prisma.UserSeries | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'UserSeriesPreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"UserSeriesSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.UserSeriesPreviousValues | null> | prisma.UserSeriesPreviousValues | null
+  }
+}
+  
+
+// Types for UserSeriesPreviousValues
+
+type UserSeriesPreviousValuesObject =
+  | UserSeriesPreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+
+type UserSeriesPreviousValuesFields =
+  | 'id'
+
+
+
+  
+
+export interface UserSeriesPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
     args: {}
     description: string
     list: undefined
@@ -2744,10 +3170,8 @@ export interface WatchedEpisodeWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
+  userSeries?: UserSeriesWhereInput | null
   episode?: EpisodeWhereInput | null
-  user?: UserWhereInput | null
-  watched?: boolean | null
-  watched_not?: boolean | null
   AND?: WatchedEpisodeWhereInput[]
   OR?: WatchedEpisodeWhereInput[]
   NOT?: WatchedEpisodeWhereInput[]
@@ -2768,10 +3192,260 @@ export type WatchedEpisodeWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'userSeries', alias?: string  } 
   | { name: 'episode', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface UserSeriesWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  user?: UserWhereInput | null
+  series?: SeriesWhereInput | null
+  AND?: UserSeriesWhereInput[]
+  OR?: UserSeriesWhereInput[]
+  NOT?: UserSeriesWhereInput[]
+}
+export type UserSeriesWhereInputInputObject =
+  | Extract<keyof UserSeriesWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
   | { name: 'user', alias?: string  } 
-  | { name: 'watched', alias?: string  } 
-  | { name: 'watched_not', alias?: string  } 
+  | { name: 'series', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface UserWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  watched_every?: WatchedEpisodeWhereInput | null
+  watched_some?: WatchedEpisodeWhereInput | null
+  watched_none?: WatchedEpisodeWhereInput | null
+  AND?: UserWhereInput[]
+  OR?: UserWhereInput[]
+  NOT?: UserWhereInput[]
+}
+export type UserWhereInputInputObject =
+  | Extract<keyof UserWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'watched_every', alias?: string  } 
+  | { name: 'watched_some', alias?: string  } 
+  | { name: 'watched_none', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface SeriesWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  seasons_every?: SeasonWhereInput | null
+  seasons_some?: SeasonWhereInput | null
+  seasons_none?: SeasonWhereInput | null
+  AND?: SeriesWhereInput[]
+  OR?: SeriesWhereInput[]
+  NOT?: SeriesWhereInput[]
+}
+export type SeriesWhereInputInputObject =
+  | Extract<keyof SeriesWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'seasons_every', alias?: string  } 
+  | { name: 'seasons_some', alias?: string  } 
+  | { name: 'seasons_none', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface SeasonWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  number?: number | null
+  number_not?: number | null
+  number_in?: number[]
+  number_not_in?: number[]
+  number_lt?: number | null
+  number_lte?: number | null
+  number_gt?: number | null
+  number_gte?: number | null
+  episodes_every?: EpisodeWhereInput | null
+  episodes_some?: EpisodeWhereInput | null
+  episodes_none?: EpisodeWhereInput | null
+  series?: SeriesWhereInput | null
+  AND?: SeasonWhereInput[]
+  OR?: SeasonWhereInput[]
+  NOT?: SeasonWhereInput[]
+}
+export type SeasonWhereInputInputObject =
+  | Extract<keyof SeasonWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'number', alias?: string  } 
+  | { name: 'number_not', alias?: string  } 
+  | { name: 'number_in', alias?: string  } 
+  | { name: 'number_not_in', alias?: string  } 
+  | { name: 'number_lt', alias?: string  } 
+  | { name: 'number_lte', alias?: string  } 
+  | { name: 'number_gt', alias?: string  } 
+  | { name: 'number_gte', alias?: string  } 
+  | { name: 'episodes_every', alias?: string  } 
+  | { name: 'episodes_some', alias?: string  } 
+  | { name: 'episodes_none', alias?: string  } 
+  | { name: 'series', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -2877,220 +3551,18 @@ export type EpisodeWhereInputInputObject =
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
-export interface SeasonWhereInput {
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[]
-  id_not_in?: string[]
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  number?: number | null
-  number_not?: number | null
-  number_in?: number[]
-  number_not_in?: number[]
-  number_lt?: number | null
-  number_lte?: number | null
-  number_gt?: number | null
-  number_gte?: number | null
-  episodes_every?: EpisodeWhereInput | null
-  episodes_some?: EpisodeWhereInput | null
-  episodes_none?: EpisodeWhereInput | null
-  series?: SeriesWhereInput | null
-  AND?: SeasonWhereInput[]
-  OR?: SeasonWhereInput[]
-  NOT?: SeasonWhereInput[]
-}
-export type SeasonWhereInputInputObject =
-  | Extract<keyof SeasonWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'number', alias?: string  } 
-  | { name: 'number_not', alias?: string  } 
-  | { name: 'number_in', alias?: string  } 
-  | { name: 'number_not_in', alias?: string  } 
-  | { name: 'number_lt', alias?: string  } 
-  | { name: 'number_lte', alias?: string  } 
-  | { name: 'number_gt', alias?: string  } 
-  | { name: 'number_gte', alias?: string  } 
-  | { name: 'episodes_every', alias?: string  } 
-  | { name: 'episodes_some', alias?: string  } 
-  | { name: 'episodes_none', alias?: string  } 
-  | { name: 'series', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
-export interface SeriesWhereInput {
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[]
-  id_not_in?: string[]
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  name?: string | null
-  name_not?: string | null
-  name_in?: string[]
-  name_not_in?: string[]
-  name_lt?: string | null
-  name_lte?: string | null
-  name_gt?: string | null
-  name_gte?: string | null
-  name_contains?: string | null
-  name_not_contains?: string | null
-  name_starts_with?: string | null
-  name_not_starts_with?: string | null
-  name_ends_with?: string | null
-  name_not_ends_with?: string | null
-  seasons_every?: SeasonWhereInput | null
-  seasons_some?: SeasonWhereInput | null
-  seasons_none?: SeasonWhereInput | null
-  AND?: SeriesWhereInput[]
-  OR?: SeriesWhereInput[]
-  NOT?: SeriesWhereInput[]
-}
-export type SeriesWhereInputInputObject =
-  | Extract<keyof SeriesWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'name_not', alias?: string  } 
-  | { name: 'name_in', alias?: string  } 
-  | { name: 'name_not_in', alias?: string  } 
-  | { name: 'name_lt', alias?: string  } 
-  | { name: 'name_lte', alias?: string  } 
-  | { name: 'name_gt', alias?: string  } 
-  | { name: 'name_gte', alias?: string  } 
-  | { name: 'name_contains', alias?: string  } 
-  | { name: 'name_not_contains', alias?: string  } 
-  | { name: 'name_starts_with', alias?: string  } 
-  | { name: 'name_not_starts_with', alias?: string  } 
-  | { name: 'name_ends_with', alias?: string  } 
-  | { name: 'name_not_ends_with', alias?: string  } 
-  | { name: 'seasons_every', alias?: string  } 
-  | { name: 'seasons_some', alias?: string  } 
-  | { name: 'seasons_none', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
-export interface UserWhereInput {
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[]
-  id_not_in?: string[]
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  name?: string | null
-  name_not?: string | null
-  name_in?: string[]
-  name_not_in?: string[]
-  name_lt?: string | null
-  name_lte?: string | null
-  name_gt?: string | null
-  name_gte?: string | null
-  name_contains?: string | null
-  name_not_contains?: string | null
-  name_starts_with?: string | null
-  name_not_starts_with?: string | null
-  name_ends_with?: string | null
-  name_not_ends_with?: string | null
-  watched_every?: WatchedEpisodeWhereInput | null
-  watched_some?: WatchedEpisodeWhereInput | null
-  watched_none?: WatchedEpisodeWhereInput | null
-  AND?: UserWhereInput[]
-  OR?: UserWhereInput[]
-  NOT?: UserWhereInput[]
-}
-export type UserWhereInputInputObject =
-  | Extract<keyof UserWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'name_not', alias?: string  } 
-  | { name: 'name_in', alias?: string  } 
-  | { name: 'name_not_in', alias?: string  } 
-  | { name: 'name_lt', alias?: string  } 
-  | { name: 'name_lte', alias?: string  } 
-  | { name: 'name_gt', alias?: string  } 
-  | { name: 'name_gte', alias?: string  } 
-  | { name: 'name_contains', alias?: string  } 
-  | { name: 'name_not_contains', alias?: string  } 
-  | { name: 'name_starts_with', alias?: string  } 
-  | { name: 'name_not_starts_with', alias?: string  } 
-  | { name: 'name_ends_with', alias?: string  } 
-  | { name: 'name_not_ends_with', alias?: string  } 
-  | { name: 'watched_every', alias?: string  } 
-  | { name: 'watched_some', alias?: string  } 
-  | { name: 'watched_none', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
 export interface WatchedEpisodeWhereUniqueInput {
   id?: string | null
 }
 export type WatchedEpisodeWhereUniqueInputInputObject =
   | Extract<keyof WatchedEpisodeWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
+  
+export interface UserSeriesWhereUniqueInput {
+  id?: string | null
+}
+export type UserSeriesWhereUniqueInputInputObject =
+  | Extract<keyof UserSeriesWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
   
 export interface EpisodeWhereUniqueInput {
@@ -3117,7 +3589,7 @@ export type SeriesWhereUniqueInputInputObject =
 export interface UserCreateInput {
   id?: string | null
   name?: string
-  watched?: WatchedEpisodeCreateManyWithoutUserInput | null
+  watched?: WatchedEpisodeCreateManyInput | null
 }
 export type UserCreateInputInputObject =
   | Extract<keyof UserCreateInput, string>
@@ -3125,25 +3597,116 @@ export type UserCreateInputInputObject =
   | { name: 'name', alias?: string  } 
   | { name: 'watched', alias?: string  } 
   
-export interface WatchedEpisodeCreateManyWithoutUserInput {
-  create?: WatchedEpisodeCreateWithoutUserInput[]
+export interface WatchedEpisodeCreateManyInput {
+  create?: WatchedEpisodeCreateInput[]
   connect?: WatchedEpisodeWhereUniqueInput[]
 }
-export type WatchedEpisodeCreateManyWithoutUserInputInputObject =
-  | Extract<keyof WatchedEpisodeCreateManyWithoutUserInput, string>
+export type WatchedEpisodeCreateManyInputInputObject =
+  | Extract<keyof WatchedEpisodeCreateManyInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface WatchedEpisodeCreateWithoutUserInput {
+export interface WatchedEpisodeCreateInput {
   id?: string | null
+  userSeries?: UserSeriesCreateOneInput
   episode?: EpisodeCreateOneInput
-  watched?: boolean | null
 }
-export type WatchedEpisodeCreateWithoutUserInputInputObject =
-  | Extract<keyof WatchedEpisodeCreateWithoutUserInput, string>
+export type WatchedEpisodeCreateInputInputObject =
+  | Extract<keyof WatchedEpisodeCreateInput, string>
   | { name: 'id', alias?: string  } 
+  | { name: 'userSeries', alias?: string  } 
   | { name: 'episode', alias?: string  } 
-  | { name: 'watched', alias?: string  } 
+  
+export interface UserSeriesCreateOneInput {
+  create?: UserSeriesCreateInput | null
+  connect?: UserSeriesWhereUniqueInput | null
+}
+export type UserSeriesCreateOneInputInputObject =
+  | Extract<keyof UserSeriesCreateOneInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface UserSeriesCreateInput {
+  id?: string | null
+  user?: UserCreateOneInput
+  series?: SeriesCreateOneInput
+}
+export type UserSeriesCreateInputInputObject =
+  | Extract<keyof UserSeriesCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'user', alias?: string  } 
+  | { name: 'series', alias?: string  } 
+  
+export interface UserCreateOneInput {
+  create?: UserCreateInput | null
+  connect?: UserWhereUniqueInput | null
+}
+export type UserCreateOneInputInputObject =
+  | Extract<keyof UserCreateOneInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface SeriesCreateOneInput {
+  create?: SeriesCreateInput | null
+  connect?: SeriesWhereUniqueInput | null
+}
+export type SeriesCreateOneInputInputObject =
+  | Extract<keyof SeriesCreateOneInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface SeriesCreateInput {
+  id?: string | null
+  name?: string
+  seasons?: SeasonCreateManyWithoutSeriesInput | null
+}
+export type SeriesCreateInputInputObject =
+  | Extract<keyof SeriesCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'seasons', alias?: string  } 
+  
+export interface SeasonCreateManyWithoutSeriesInput {
+  create?: SeasonCreateWithoutSeriesInput[]
+  connect?: SeasonWhereUniqueInput[]
+}
+export type SeasonCreateManyWithoutSeriesInputInputObject =
+  | Extract<keyof SeasonCreateManyWithoutSeriesInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface SeasonCreateWithoutSeriesInput {
+  id?: string | null
+  number?: number
+  episodes?: EpisodeCreateManyWithoutSeasonInput | null
+}
+export type SeasonCreateWithoutSeriesInputInputObject =
+  | Extract<keyof SeasonCreateWithoutSeriesInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'number', alias?: string  } 
+  | { name: 'episodes', alias?: string  } 
+  
+export interface EpisodeCreateManyWithoutSeasonInput {
+  create?: EpisodeCreateWithoutSeasonInput[]
+  connect?: EpisodeWhereUniqueInput[]
+}
+export type EpisodeCreateManyWithoutSeasonInputInputObject =
+  | Extract<keyof EpisodeCreateManyWithoutSeasonInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface EpisodeCreateWithoutSeasonInput {
+  id?: string | null
+  name?: string | null
+  number?: number
+  release?: string | null
+}
+export type EpisodeCreateWithoutSeasonInputInputObject =
+  | Extract<keyof EpisodeCreateWithoutSeasonInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'number', alias?: string  } 
+  | { name: 'release', alias?: string  } 
   
 export interface EpisodeCreateOneInput {
   create?: EpisodeCreateInput | null
@@ -3209,26 +3772,140 @@ export type SeriesCreateWithoutSeasonsInputInputObject =
   
 export interface UserUpdateInput {
   name?: string | null
-  watched?: WatchedEpisodeUpdateManyWithoutUserInput | null
+  watched?: WatchedEpisodeUpdateManyInput | null
 }
 export type UserUpdateInputInputObject =
   | Extract<keyof UserUpdateInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'watched', alias?: string  } 
   
-export interface WatchedEpisodeUpdateManyWithoutUserInput {
-  create?: WatchedEpisodeCreateWithoutUserInput[]
+export interface WatchedEpisodeUpdateManyInput {
+  create?: WatchedEpisodeCreateInput[]
+  update?: WatchedEpisodeUpdateWithWhereUniqueNestedInput[]
+  upsert?: WatchedEpisodeUpsertWithWhereUniqueNestedInput[]
   delete?: WatchedEpisodeWhereUniqueInput[]
   connect?: WatchedEpisodeWhereUniqueInput[]
   set?: WatchedEpisodeWhereUniqueInput[]
   disconnect?: WatchedEpisodeWhereUniqueInput[]
-  update?: WatchedEpisodeUpdateWithWhereUniqueWithoutUserInput[]
-  upsert?: WatchedEpisodeUpsertWithWhereUniqueWithoutUserInput[]
   deleteMany?: WatchedEpisodeScalarWhereInput[]
-  updateMany?: WatchedEpisodeUpdateManyWithWhereNestedInput[]
 }
-export type WatchedEpisodeUpdateManyWithoutUserInputInputObject =
-  | Extract<keyof WatchedEpisodeUpdateManyWithoutUserInput, string>
+export type WatchedEpisodeUpdateManyInputInputObject =
+  | Extract<keyof WatchedEpisodeUpdateManyInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  | { name: 'set', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'deleteMany', alias?: string  } 
+  
+export interface WatchedEpisodeUpdateWithWhereUniqueNestedInput {
+  where?: WatchedEpisodeWhereUniqueInput
+  data?: WatchedEpisodeUpdateDataInput
+}
+export type WatchedEpisodeUpdateWithWhereUniqueNestedInputInputObject =
+  | Extract<keyof WatchedEpisodeUpdateWithWhereUniqueNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface WatchedEpisodeUpdateDataInput {
+  userSeries?: UserSeriesUpdateOneRequiredInput | null
+  episode?: EpisodeUpdateOneRequiredInput | null
+}
+export type WatchedEpisodeUpdateDataInputInputObject =
+  | Extract<keyof WatchedEpisodeUpdateDataInput, string>
+  | { name: 'userSeries', alias?: string  } 
+  | { name: 'episode', alias?: string  } 
+  
+export interface UserSeriesUpdateOneRequiredInput {
+  create?: UserSeriesCreateInput | null
+  update?: UserSeriesUpdateDataInput | null
+  upsert?: UserSeriesUpsertNestedInput | null
+  connect?: UserSeriesWhereUniqueInput | null
+}
+export type UserSeriesUpdateOneRequiredInputInputObject =
+  | Extract<keyof UserSeriesUpdateOneRequiredInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface UserSeriesUpdateDataInput {
+  user?: UserUpdateOneRequiredInput | null
+  series?: SeriesUpdateOneRequiredInput | null
+}
+export type UserSeriesUpdateDataInputInputObject =
+  | Extract<keyof UserSeriesUpdateDataInput, string>
+  | { name: 'user', alias?: string  } 
+  | { name: 'series', alias?: string  } 
+  
+export interface UserUpdateOneRequiredInput {
+  create?: UserCreateInput | null
+  update?: UserUpdateDataInput | null
+  upsert?: UserUpsertNestedInput | null
+  connect?: UserWhereUniqueInput | null
+}
+export type UserUpdateOneRequiredInputInputObject =
+  | Extract<keyof UserUpdateOneRequiredInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface UserUpdateDataInput {
+  name?: string | null
+  watched?: WatchedEpisodeUpdateManyInput | null
+}
+export type UserUpdateDataInputInputObject =
+  | Extract<keyof UserUpdateDataInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'watched', alias?: string  } 
+  
+export interface UserUpsertNestedInput {
+  update?: UserUpdateDataInput
+  create?: UserCreateInput
+}
+export type UserUpsertNestedInputInputObject =
+  | Extract<keyof UserUpsertNestedInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface SeriesUpdateOneRequiredInput {
+  create?: SeriesCreateInput | null
+  update?: SeriesUpdateDataInput | null
+  upsert?: SeriesUpsertNestedInput | null
+  connect?: SeriesWhereUniqueInput | null
+}
+export type SeriesUpdateOneRequiredInputInputObject =
+  | Extract<keyof SeriesUpdateOneRequiredInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface SeriesUpdateDataInput {
+  name?: string | null
+  seasons?: SeasonUpdateManyWithoutSeriesInput | null
+}
+export type SeriesUpdateDataInputInputObject =
+  | Extract<keyof SeriesUpdateDataInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'seasons', alias?: string  } 
+  
+export interface SeasonUpdateManyWithoutSeriesInput {
+  create?: SeasonCreateWithoutSeriesInput[]
+  delete?: SeasonWhereUniqueInput[]
+  connect?: SeasonWhereUniqueInput[]
+  set?: SeasonWhereUniqueInput[]
+  disconnect?: SeasonWhereUniqueInput[]
+  update?: SeasonUpdateWithWhereUniqueWithoutSeriesInput[]
+  upsert?: SeasonUpsertWithWhereUniqueWithoutSeriesInput[]
+  deleteMany?: SeasonScalarWhereInput[]
+  updateMany?: SeasonUpdateManyWithWhereNestedInput[]
+}
+export type SeasonUpdateManyWithoutSeriesInputInputObject =
+  | Extract<keyof SeasonUpdateManyWithoutSeriesInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'delete', alias?: string  } 
   | { name: 'connect', alias?: string  } 
@@ -3239,343 +3916,23 @@ export type WatchedEpisodeUpdateManyWithoutUserInputInputObject =
   | { name: 'deleteMany', alias?: string  } 
   | { name: 'updateMany', alias?: string  } 
   
-export interface WatchedEpisodeUpdateWithWhereUniqueWithoutUserInput {
-  where?: WatchedEpisodeWhereUniqueInput
-  data?: WatchedEpisodeUpdateWithoutUserDataInput
+export interface SeasonUpdateWithWhereUniqueWithoutSeriesInput {
+  where?: SeasonWhereUniqueInput
+  data?: SeasonUpdateWithoutSeriesDataInput
 }
-export type WatchedEpisodeUpdateWithWhereUniqueWithoutUserInputInputObject =
-  | Extract<keyof WatchedEpisodeUpdateWithWhereUniqueWithoutUserInput, string>
+export type SeasonUpdateWithWhereUniqueWithoutSeriesInputInputObject =
+  | Extract<keyof SeasonUpdateWithWhereUniqueWithoutSeriesInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'data', alias?: string  } 
   
-export interface WatchedEpisodeUpdateWithoutUserDataInput {
-  episode?: EpisodeUpdateOneRequiredInput | null
-  watched?: boolean | null
-}
-export type WatchedEpisodeUpdateWithoutUserDataInputInputObject =
-  | Extract<keyof WatchedEpisodeUpdateWithoutUserDataInput, string>
-  | { name: 'episode', alias?: string  } 
-  | { name: 'watched', alias?: string  } 
-  
-export interface EpisodeUpdateOneRequiredInput {
-  create?: EpisodeCreateInput | null
-  update?: EpisodeUpdateDataInput | null
-  upsert?: EpisodeUpsertNestedInput | null
-  connect?: EpisodeWhereUniqueInput | null
-}
-export type EpisodeUpdateOneRequiredInputInputObject =
-  | Extract<keyof EpisodeUpdateOneRequiredInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface EpisodeUpdateDataInput {
-  name?: string | null
-  number?: number | null
-  release?: string | null
-  season?: SeasonUpdateOneRequiredWithoutEpisodesInput | null
-}
-export type EpisodeUpdateDataInputInputObject =
-  | Extract<keyof EpisodeUpdateDataInput, string>
-  | { name: 'name', alias?: string  } 
-  | { name: 'number', alias?: string  } 
-  | { name: 'release', alias?: string  } 
-  | { name: 'season', alias?: string  } 
-  
-export interface SeasonUpdateOneRequiredWithoutEpisodesInput {
-  create?: SeasonCreateWithoutEpisodesInput | null
-  update?: SeasonUpdateWithoutEpisodesDataInput | null
-  upsert?: SeasonUpsertWithoutEpisodesInput | null
-  connect?: SeasonWhereUniqueInput | null
-}
-export type SeasonUpdateOneRequiredWithoutEpisodesInputInputObject =
-  | Extract<keyof SeasonUpdateOneRequiredWithoutEpisodesInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface SeasonUpdateWithoutEpisodesDataInput {
-  number?: number | null
-  series?: SeriesUpdateOneRequiredWithoutSeasonsInput | null
-}
-export type SeasonUpdateWithoutEpisodesDataInputInputObject =
-  | Extract<keyof SeasonUpdateWithoutEpisodesDataInput, string>
-  | { name: 'number', alias?: string  } 
-  | { name: 'series', alias?: string  } 
-  
-export interface SeriesUpdateOneRequiredWithoutSeasonsInput {
-  create?: SeriesCreateWithoutSeasonsInput | null
-  update?: SeriesUpdateWithoutSeasonsDataInput | null
-  upsert?: SeriesUpsertWithoutSeasonsInput | null
-  connect?: SeriesWhereUniqueInput | null
-}
-export type SeriesUpdateOneRequiredWithoutSeasonsInputInputObject =
-  | Extract<keyof SeriesUpdateOneRequiredWithoutSeasonsInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface SeriesUpdateWithoutSeasonsDataInput {
-  name?: string | null
-}
-export type SeriesUpdateWithoutSeasonsDataInputInputObject =
-  | Extract<keyof SeriesUpdateWithoutSeasonsDataInput, string>
-  | { name: 'name', alias?: string  } 
-  
-export interface SeriesUpsertWithoutSeasonsInput {
-  update?: SeriesUpdateWithoutSeasonsDataInput
-  create?: SeriesCreateWithoutSeasonsInput
-}
-export type SeriesUpsertWithoutSeasonsInputInputObject =
-  | Extract<keyof SeriesUpsertWithoutSeasonsInput, string>
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
-export interface SeasonUpsertWithoutEpisodesInput {
-  update?: SeasonUpdateWithoutEpisodesDataInput
-  create?: SeasonCreateWithoutEpisodesInput
-}
-export type SeasonUpsertWithoutEpisodesInputInputObject =
-  | Extract<keyof SeasonUpsertWithoutEpisodesInput, string>
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
-export interface EpisodeUpsertNestedInput {
-  update?: EpisodeUpdateDataInput
-  create?: EpisodeCreateInput
-}
-export type EpisodeUpsertNestedInputInputObject =
-  | Extract<keyof EpisodeUpsertNestedInput, string>
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
-export interface WatchedEpisodeUpsertWithWhereUniqueWithoutUserInput {
-  where?: WatchedEpisodeWhereUniqueInput
-  update?: WatchedEpisodeUpdateWithoutUserDataInput
-  create?: WatchedEpisodeCreateWithoutUserInput
-}
-export type WatchedEpisodeUpsertWithWhereUniqueWithoutUserInputInputObject =
-  | Extract<keyof WatchedEpisodeUpsertWithWhereUniqueWithoutUserInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
-export interface WatchedEpisodeScalarWhereInput {
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[]
-  id_not_in?: string[]
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  watched?: boolean | null
-  watched_not?: boolean | null
-  AND?: WatchedEpisodeScalarWhereInput[]
-  OR?: WatchedEpisodeScalarWhereInput[]
-  NOT?: WatchedEpisodeScalarWhereInput[]
-}
-export type WatchedEpisodeScalarWhereInputInputObject =
-  | Extract<keyof WatchedEpisodeScalarWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'watched', alias?: string  } 
-  | { name: 'watched_not', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
-export interface WatchedEpisodeUpdateManyWithWhereNestedInput {
-  where?: WatchedEpisodeScalarWhereInput
-  data?: WatchedEpisodeUpdateManyDataInput
-}
-export type WatchedEpisodeUpdateManyWithWhereNestedInputInputObject =
-  | Extract<keyof WatchedEpisodeUpdateManyWithWhereNestedInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'data', alias?: string  } 
-  
-export interface WatchedEpisodeUpdateManyDataInput {
-  watched?: boolean | null
-}
-export type WatchedEpisodeUpdateManyDataInputInputObject =
-  | Extract<keyof WatchedEpisodeUpdateManyDataInput, string>
-  | { name: 'watched', alias?: string  } 
-  
-export interface UserUpdateManyMutationInput {
-  name?: string | null
-}
-export type UserUpdateManyMutationInputInputObject =
-  | Extract<keyof UserUpdateManyMutationInput, string>
-  | { name: 'name', alias?: string  } 
-  
-export interface WatchedEpisodeCreateInput {
-  id?: string | null
-  episode?: EpisodeCreateOneInput
-  user?: UserCreateOneWithoutWatchedInput
-  watched?: boolean | null
-}
-export type WatchedEpisodeCreateInputInputObject =
-  | Extract<keyof WatchedEpisodeCreateInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'episode', alias?: string  } 
-  | { name: 'user', alias?: string  } 
-  | { name: 'watched', alias?: string  } 
-  
-export interface UserCreateOneWithoutWatchedInput {
-  create?: UserCreateWithoutWatchedInput | null
-  connect?: UserWhereUniqueInput | null
-}
-export type UserCreateOneWithoutWatchedInputInputObject =
-  | Extract<keyof UserCreateOneWithoutWatchedInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface UserCreateWithoutWatchedInput {
-  id?: string | null
-  name?: string
-}
-export type UserCreateWithoutWatchedInputInputObject =
-  | Extract<keyof UserCreateWithoutWatchedInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  
-export interface WatchedEpisodeUpdateInput {
-  episode?: EpisodeUpdateOneRequiredInput | null
-  user?: UserUpdateOneRequiredWithoutWatchedInput | null
-  watched?: boolean | null
-}
-export type WatchedEpisodeUpdateInputInputObject =
-  | Extract<keyof WatchedEpisodeUpdateInput, string>
-  | { name: 'episode', alias?: string  } 
-  | { name: 'user', alias?: string  } 
-  | { name: 'watched', alias?: string  } 
-  
-export interface UserUpdateOneRequiredWithoutWatchedInput {
-  create?: UserCreateWithoutWatchedInput | null
-  update?: UserUpdateWithoutWatchedDataInput | null
-  upsert?: UserUpsertWithoutWatchedInput | null
-  connect?: UserWhereUniqueInput | null
-}
-export type UserUpdateOneRequiredWithoutWatchedInputInputObject =
-  | Extract<keyof UserUpdateOneRequiredWithoutWatchedInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface UserUpdateWithoutWatchedDataInput {
-  name?: string | null
-}
-export type UserUpdateWithoutWatchedDataInputInputObject =
-  | Extract<keyof UserUpdateWithoutWatchedDataInput, string>
-  | { name: 'name', alias?: string  } 
-  
-export interface UserUpsertWithoutWatchedInput {
-  update?: UserUpdateWithoutWatchedDataInput
-  create?: UserCreateWithoutWatchedInput
-}
-export type UserUpsertWithoutWatchedInputInputObject =
-  | Extract<keyof UserUpsertWithoutWatchedInput, string>
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
-export interface WatchedEpisodeUpdateManyMutationInput {
-  watched?: boolean | null
-}
-export type WatchedEpisodeUpdateManyMutationInputInputObject =
-  | Extract<keyof WatchedEpisodeUpdateManyMutationInput, string>
-  | { name: 'watched', alias?: string  } 
-  
-export interface EpisodeUpdateInput {
-  name?: string | null
-  number?: number | null
-  release?: string | null
-  season?: SeasonUpdateOneRequiredWithoutEpisodesInput | null
-}
-export type EpisodeUpdateInputInputObject =
-  | Extract<keyof EpisodeUpdateInput, string>
-  | { name: 'name', alias?: string  } 
-  | { name: 'number', alias?: string  } 
-  | { name: 'release', alias?: string  } 
-  | { name: 'season', alias?: string  } 
-  
-export interface EpisodeUpdateManyMutationInput {
-  name?: string | null
-  number?: number | null
-  release?: string | null
-}
-export type EpisodeUpdateManyMutationInputInputObject =
-  | Extract<keyof EpisodeUpdateManyMutationInput, string>
-  | { name: 'name', alias?: string  } 
-  | { name: 'number', alias?: string  } 
-  | { name: 'release', alias?: string  } 
-  
-export interface SeasonCreateInput {
-  id?: string | null
-  number?: number
-  episodes?: EpisodeCreateManyWithoutSeasonInput | null
-  series?: SeriesCreateOneWithoutSeasonsInput
-}
-export type SeasonCreateInputInputObject =
-  | Extract<keyof SeasonCreateInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'number', alias?: string  } 
-  | { name: 'episodes', alias?: string  } 
-  | { name: 'series', alias?: string  } 
-  
-export interface EpisodeCreateManyWithoutSeasonInput {
-  create?: EpisodeCreateWithoutSeasonInput[]
-  connect?: EpisodeWhereUniqueInput[]
-}
-export type EpisodeCreateManyWithoutSeasonInputInputObject =
-  | Extract<keyof EpisodeCreateManyWithoutSeasonInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface EpisodeCreateWithoutSeasonInput {
-  id?: string | null
-  name?: string | null
-  number?: number
-  release?: string | null
-}
-export type EpisodeCreateWithoutSeasonInputInputObject =
-  | Extract<keyof EpisodeCreateWithoutSeasonInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'number', alias?: string  } 
-  | { name: 'release', alias?: string  } 
-  
-export interface SeasonUpdateInput {
+export interface SeasonUpdateWithoutSeriesDataInput {
   number?: number | null
   episodes?: EpisodeUpdateManyWithoutSeasonInput | null
-  series?: SeriesUpdateOneRequiredWithoutSeasonsInput | null
 }
-export type SeasonUpdateInputInputObject =
-  | Extract<keyof SeasonUpdateInput, string>
+export type SeasonUpdateWithoutSeriesDataInputInputObject =
+  | Extract<keyof SeasonUpdateWithoutSeriesDataInput, string>
   | { name: 'number', alias?: string  } 
   | { name: 'episodes', alias?: string  } 
-  | { name: 'series', alias?: string  } 
   
 export interface EpisodeUpdateManyWithoutSeasonInput {
   create?: EpisodeCreateWithoutSeasonInput[]
@@ -3750,94 +4107,6 @@ export type EpisodeUpdateManyDataInputInputObject =
   | { name: 'number', alias?: string  } 
   | { name: 'release', alias?: string  } 
   
-export interface SeasonUpdateManyMutationInput {
-  number?: number | null
-}
-export type SeasonUpdateManyMutationInputInputObject =
-  | Extract<keyof SeasonUpdateManyMutationInput, string>
-  | { name: 'number', alias?: string  } 
-  
-export interface SeriesCreateInput {
-  id?: string | null
-  name?: string
-  seasons?: SeasonCreateManyWithoutSeriesInput | null
-}
-export type SeriesCreateInputInputObject =
-  | Extract<keyof SeriesCreateInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'seasons', alias?: string  } 
-  
-export interface SeasonCreateManyWithoutSeriesInput {
-  create?: SeasonCreateWithoutSeriesInput[]
-  connect?: SeasonWhereUniqueInput[]
-}
-export type SeasonCreateManyWithoutSeriesInputInputObject =
-  | Extract<keyof SeasonCreateManyWithoutSeriesInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface SeasonCreateWithoutSeriesInput {
-  id?: string | null
-  number?: number
-  episodes?: EpisodeCreateManyWithoutSeasonInput | null
-}
-export type SeasonCreateWithoutSeriesInputInputObject =
-  | Extract<keyof SeasonCreateWithoutSeriesInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'number', alias?: string  } 
-  | { name: 'episodes', alias?: string  } 
-  
-export interface SeriesUpdateInput {
-  name?: string | null
-  seasons?: SeasonUpdateManyWithoutSeriesInput | null
-}
-export type SeriesUpdateInputInputObject =
-  | Extract<keyof SeriesUpdateInput, string>
-  | { name: 'name', alias?: string  } 
-  | { name: 'seasons', alias?: string  } 
-  
-export interface SeasonUpdateManyWithoutSeriesInput {
-  create?: SeasonCreateWithoutSeriesInput[]
-  delete?: SeasonWhereUniqueInput[]
-  connect?: SeasonWhereUniqueInput[]
-  set?: SeasonWhereUniqueInput[]
-  disconnect?: SeasonWhereUniqueInput[]
-  update?: SeasonUpdateWithWhereUniqueWithoutSeriesInput[]
-  upsert?: SeasonUpsertWithWhereUniqueWithoutSeriesInput[]
-  deleteMany?: SeasonScalarWhereInput[]
-  updateMany?: SeasonUpdateManyWithWhereNestedInput[]
-}
-export type SeasonUpdateManyWithoutSeriesInputInputObject =
-  | Extract<keyof SeasonUpdateManyWithoutSeriesInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'delete', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  | { name: 'set', alias?: string  } 
-  | { name: 'disconnect', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'deleteMany', alias?: string  } 
-  | { name: 'updateMany', alias?: string  } 
-  
-export interface SeasonUpdateWithWhereUniqueWithoutSeriesInput {
-  where?: SeasonWhereUniqueInput
-  data?: SeasonUpdateWithoutSeriesDataInput
-}
-export type SeasonUpdateWithWhereUniqueWithoutSeriesInputInputObject =
-  | Extract<keyof SeasonUpdateWithWhereUniqueWithoutSeriesInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'data', alias?: string  } 
-  
-export interface SeasonUpdateWithoutSeriesDataInput {
-  number?: number | null
-  episodes?: EpisodeUpdateManyWithoutSeasonInput | null
-}
-export type SeasonUpdateWithoutSeriesDataInputInputObject =
-  | Extract<keyof SeasonUpdateWithoutSeriesDataInput, string>
-  | { name: 'number', alias?: string  } 
-  | { name: 'episodes', alias?: string  } 
-  
 export interface SeasonUpsertWithWhereUniqueWithoutSeriesInput {
   where?: SeasonWhereUniqueInput
   update?: SeasonUpdateWithoutSeriesDataInput
@@ -3920,6 +4189,258 @@ export type SeasonUpdateManyDataInputInputObject =
   | Extract<keyof SeasonUpdateManyDataInput, string>
   | { name: 'number', alias?: string  } 
   
+export interface SeriesUpsertNestedInput {
+  update?: SeriesUpdateDataInput
+  create?: SeriesCreateInput
+}
+export type SeriesUpsertNestedInputInputObject =
+  | Extract<keyof SeriesUpsertNestedInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface UserSeriesUpsertNestedInput {
+  update?: UserSeriesUpdateDataInput
+  create?: UserSeriesCreateInput
+}
+export type UserSeriesUpsertNestedInputInputObject =
+  | Extract<keyof UserSeriesUpsertNestedInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface EpisodeUpdateOneRequiredInput {
+  create?: EpisodeCreateInput | null
+  update?: EpisodeUpdateDataInput | null
+  upsert?: EpisodeUpsertNestedInput | null
+  connect?: EpisodeWhereUniqueInput | null
+}
+export type EpisodeUpdateOneRequiredInputInputObject =
+  | Extract<keyof EpisodeUpdateOneRequiredInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface EpisodeUpdateDataInput {
+  name?: string | null
+  number?: number | null
+  release?: string | null
+  season?: SeasonUpdateOneRequiredWithoutEpisodesInput | null
+}
+export type EpisodeUpdateDataInputInputObject =
+  | Extract<keyof EpisodeUpdateDataInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'number', alias?: string  } 
+  | { name: 'release', alias?: string  } 
+  | { name: 'season', alias?: string  } 
+  
+export interface SeasonUpdateOneRequiredWithoutEpisodesInput {
+  create?: SeasonCreateWithoutEpisodesInput | null
+  update?: SeasonUpdateWithoutEpisodesDataInput | null
+  upsert?: SeasonUpsertWithoutEpisodesInput | null
+  connect?: SeasonWhereUniqueInput | null
+}
+export type SeasonUpdateOneRequiredWithoutEpisodesInputInputObject =
+  | Extract<keyof SeasonUpdateOneRequiredWithoutEpisodesInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface SeasonUpdateWithoutEpisodesDataInput {
+  number?: number | null
+  series?: SeriesUpdateOneRequiredWithoutSeasonsInput | null
+}
+export type SeasonUpdateWithoutEpisodesDataInputInputObject =
+  | Extract<keyof SeasonUpdateWithoutEpisodesDataInput, string>
+  | { name: 'number', alias?: string  } 
+  | { name: 'series', alias?: string  } 
+  
+export interface SeriesUpdateOneRequiredWithoutSeasonsInput {
+  create?: SeriesCreateWithoutSeasonsInput | null
+  update?: SeriesUpdateWithoutSeasonsDataInput | null
+  upsert?: SeriesUpsertWithoutSeasonsInput | null
+  connect?: SeriesWhereUniqueInput | null
+}
+export type SeriesUpdateOneRequiredWithoutSeasonsInputInputObject =
+  | Extract<keyof SeriesUpdateOneRequiredWithoutSeasonsInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface SeriesUpdateWithoutSeasonsDataInput {
+  name?: string | null
+}
+export type SeriesUpdateWithoutSeasonsDataInputInputObject =
+  | Extract<keyof SeriesUpdateWithoutSeasonsDataInput, string>
+  | { name: 'name', alias?: string  } 
+  
+export interface SeriesUpsertWithoutSeasonsInput {
+  update?: SeriesUpdateWithoutSeasonsDataInput
+  create?: SeriesCreateWithoutSeasonsInput
+}
+export type SeriesUpsertWithoutSeasonsInputInputObject =
+  | Extract<keyof SeriesUpsertWithoutSeasonsInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface SeasonUpsertWithoutEpisodesInput {
+  update?: SeasonUpdateWithoutEpisodesDataInput
+  create?: SeasonCreateWithoutEpisodesInput
+}
+export type SeasonUpsertWithoutEpisodesInputInputObject =
+  | Extract<keyof SeasonUpsertWithoutEpisodesInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface EpisodeUpsertNestedInput {
+  update?: EpisodeUpdateDataInput
+  create?: EpisodeCreateInput
+}
+export type EpisodeUpsertNestedInputInputObject =
+  | Extract<keyof EpisodeUpsertNestedInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface WatchedEpisodeUpsertWithWhereUniqueNestedInput {
+  where?: WatchedEpisodeWhereUniqueInput
+  update?: WatchedEpisodeUpdateDataInput
+  create?: WatchedEpisodeCreateInput
+}
+export type WatchedEpisodeUpsertWithWhereUniqueNestedInputInputObject =
+  | Extract<keyof WatchedEpisodeUpsertWithWhereUniqueNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface WatchedEpisodeScalarWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  AND?: WatchedEpisodeScalarWhereInput[]
+  OR?: WatchedEpisodeScalarWhereInput[]
+  NOT?: WatchedEpisodeScalarWhereInput[]
+}
+export type WatchedEpisodeScalarWhereInputInputObject =
+  | Extract<keyof WatchedEpisodeScalarWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface UserUpdateManyMutationInput {
+  name?: string | null
+}
+export type UserUpdateManyMutationInputInputObject =
+  | Extract<keyof UserUpdateManyMutationInput, string>
+  | { name: 'name', alias?: string  } 
+  
+export interface WatchedEpisodeUpdateInput {
+  userSeries?: UserSeriesUpdateOneRequiredInput | null
+  episode?: EpisodeUpdateOneRequiredInput | null
+}
+export type WatchedEpisodeUpdateInputInputObject =
+  | Extract<keyof WatchedEpisodeUpdateInput, string>
+  | { name: 'userSeries', alias?: string  } 
+  | { name: 'episode', alias?: string  } 
+  
+export interface UserSeriesUpdateInput {
+  user?: UserUpdateOneRequiredInput | null
+  series?: SeriesUpdateOneRequiredInput | null
+}
+export type UserSeriesUpdateInputInputObject =
+  | Extract<keyof UserSeriesUpdateInput, string>
+  | { name: 'user', alias?: string  } 
+  | { name: 'series', alias?: string  } 
+  
+export interface EpisodeUpdateInput {
+  name?: string | null
+  number?: number | null
+  release?: string | null
+  season?: SeasonUpdateOneRequiredWithoutEpisodesInput | null
+}
+export type EpisodeUpdateInputInputObject =
+  | Extract<keyof EpisodeUpdateInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'number', alias?: string  } 
+  | { name: 'release', alias?: string  } 
+  | { name: 'season', alias?: string  } 
+  
+export interface EpisodeUpdateManyMutationInput {
+  name?: string | null
+  number?: number | null
+  release?: string | null
+}
+export type EpisodeUpdateManyMutationInputInputObject =
+  | Extract<keyof EpisodeUpdateManyMutationInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'number', alias?: string  } 
+  | { name: 'release', alias?: string  } 
+  
+export interface SeasonCreateInput {
+  id?: string | null
+  number?: number
+  episodes?: EpisodeCreateManyWithoutSeasonInput | null
+  series?: SeriesCreateOneWithoutSeasonsInput
+}
+export type SeasonCreateInputInputObject =
+  | Extract<keyof SeasonCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'number', alias?: string  } 
+  | { name: 'episodes', alias?: string  } 
+  | { name: 'series', alias?: string  } 
+  
+export interface SeasonUpdateInput {
+  number?: number | null
+  episodes?: EpisodeUpdateManyWithoutSeasonInput | null
+  series?: SeriesUpdateOneRequiredWithoutSeasonsInput | null
+}
+export type SeasonUpdateInputInputObject =
+  | Extract<keyof SeasonUpdateInput, string>
+  | { name: 'number', alias?: string  } 
+  | { name: 'episodes', alias?: string  } 
+  | { name: 'series', alias?: string  } 
+  
+export interface SeasonUpdateManyMutationInput {
+  number?: number | null
+}
+export type SeasonUpdateManyMutationInputInputObject =
+  | Extract<keyof SeasonUpdateManyMutationInput, string>
+  | { name: 'number', alias?: string  } 
+  
+export interface SeriesUpdateInput {
+  name?: string | null
+  seasons?: SeasonUpdateManyWithoutSeriesInput | null
+}
+export type SeriesUpdateInputInputObject =
+  | Extract<keyof SeriesUpdateInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'seasons', alias?: string  } 
+  
 export interface SeriesUpdateManyMutationInput {
   name?: string | null
 }
@@ -3960,6 +4481,27 @@ export interface WatchedEpisodeSubscriptionWhereInput {
 }
 export type WatchedEpisodeSubscriptionWhereInputInputObject =
   | Extract<keyof WatchedEpisodeSubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface UserSeriesSubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: UserSeriesWhereInput | null
+  AND?: UserSeriesSubscriptionWhereInput[]
+  OR?: UserSeriesSubscriptionWhereInput[]
+  NOT?: UserSeriesSubscriptionWhereInput[]
+}
+export type UserSeriesSubscriptionWhereInputInputObject =
+  | Extract<keyof UserSeriesSubscriptionWhereInput, string>
   | { name: 'mutation_in', alias?: string  } 
   | { name: 'updatedFields_contains', alias?: string  } 
   | { name: 'updatedFields_contains_every', alias?: string  } 
@@ -4036,8 +4578,16 @@ export type SeriesSubscriptionWhereInputInputObject =
 export type WatchedEpisodeOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
-  | 'watched_ASC'
-  | 'watched_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  
+export type SeasonOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'number_ASC'
+  | 'number_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
@@ -4057,21 +4607,19 @@ export type EpisodeOrderByInputValues =
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
   
-export type SeasonOrderByInputValues =
-  | 'id_ASC'
-  | 'id_DESC'
-  | 'number_ASC'
-  | 'number_DESC'
-  | 'createdAt_ASC'
-  | 'createdAt_DESC'
-  | 'updatedAt_ASC'
-  | 'updatedAt_DESC'
-  
 export type UserOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
   | 'name_ASC'
   | 'name_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  
+export type UserSeriesOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'

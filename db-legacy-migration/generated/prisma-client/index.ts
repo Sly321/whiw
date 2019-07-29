@@ -20,6 +20,7 @@ export interface Exists {
   season: (where?: SeasonWhereInput) => Promise<boolean>;
   series: (where?: SeriesWhereInput) => Promise<boolean>;
   user: (where?: UserWhereInput) => Promise<boolean>;
+  userSeries: (where?: UserSeriesWhereInput) => Promise<boolean>;
   watchedEpisode: (where?: WatchedEpisodeWhereInput) => Promise<boolean>;
 }
 
@@ -118,6 +119,25 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => UserConnectionPromise;
+  userSeries: (where: UserSeriesWhereUniqueInput) => UserSeriesNullablePromise;
+  userSerieses: (args?: {
+    where?: UserSeriesWhereInput;
+    orderBy?: UserSeriesOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<UserSeries>;
+  userSeriesesConnection: (args?: {
+    where?: UserSeriesWhereInput;
+    orderBy?: UserSeriesOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => UserSeriesConnectionPromise;
   watchedEpisode: (
     where: WatchedEpisodeWhereUniqueInput
   ) => WatchedEpisodeNullablePromise;
@@ -209,6 +229,18 @@ export interface Prisma {
   }) => UserPromise;
   deleteUser: (where: UserWhereUniqueInput) => UserPromise;
   deleteManyUsers: (where?: UserWhereInput) => BatchPayloadPromise;
+  createUserSeries: (data: UserSeriesCreateInput) => UserSeriesPromise;
+  updateUserSeries: (args: {
+    data: UserSeriesUpdateInput;
+    where: UserSeriesWhereUniqueInput;
+  }) => UserSeriesPromise;
+  upsertUserSeries: (args: {
+    where: UserSeriesWhereUniqueInput;
+    create: UserSeriesCreateInput;
+    update: UserSeriesUpdateInput;
+  }) => UserSeriesPromise;
+  deleteUserSeries: (where: UserSeriesWhereUniqueInput) => UserSeriesPromise;
+  deleteManyUserSerieses: (where?: UserSeriesWhereInput) => BatchPayloadPromise;
   createWatchedEpisode: (
     data: WatchedEpisodeCreateInput
   ) => WatchedEpisodePromise;
@@ -216,10 +248,6 @@ export interface Prisma {
     data: WatchedEpisodeUpdateInput;
     where: WatchedEpisodeWhereUniqueInput;
   }) => WatchedEpisodePromise;
-  updateManyWatchedEpisodes: (args: {
-    data: WatchedEpisodeUpdateManyMutationInput;
-    where?: WatchedEpisodeWhereInput;
-  }) => BatchPayloadPromise;
   upsertWatchedEpisode: (args: {
     where: WatchedEpisodeWhereUniqueInput;
     create: WatchedEpisodeCreateInput;
@@ -252,6 +280,9 @@ export interface Subscription {
   user: (
     where?: UserSubscriptionWhereInput
   ) => UserSubscriptionPayloadSubscription;
+  userSeries: (
+    where?: UserSeriesSubscriptionWhereInput
+  ) => UserSeriesSubscriptionPayloadSubscription;
   watchedEpisode: (
     where?: WatchedEpisodeSubscriptionWhereInput
   ) => WatchedEpisodeSubscriptionPayloadSubscription;
@@ -287,13 +318,11 @@ export type SeriesOrderByInput =
   | "name_ASC"
   | "name_DESC";
 
-export type WatchedEpisodeOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "watched_ASC"
-  | "watched_DESC";
+export type WatchedEpisodeOrderByInput = "id_ASC" | "id_DESC";
 
 export type UserOrderByInput = "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC";
+
+export type UserSeriesOrderByInput = "id_ASC" | "id_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
@@ -448,13 +477,33 @@ export interface WatchedEpisodeWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
+  userSeries?: Maybe<UserSeriesWhereInput>;
   episode?: Maybe<EpisodeWhereInput>;
-  user?: Maybe<UserWhereInput>;
-  watched?: Maybe<Boolean>;
-  watched_not?: Maybe<Boolean>;
   AND?: Maybe<WatchedEpisodeWhereInput[] | WatchedEpisodeWhereInput>;
   OR?: Maybe<WatchedEpisodeWhereInput[] | WatchedEpisodeWhereInput>;
   NOT?: Maybe<WatchedEpisodeWhereInput[] | WatchedEpisodeWhereInput>;
+}
+
+export interface UserSeriesWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  user?: Maybe<UserWhereInput>;
+  series?: Maybe<SeriesWhereInput>;
+  AND?: Maybe<UserSeriesWhereInput[] | UserSeriesWhereInput>;
+  OR?: Maybe<UserSeriesWhereInput[] | UserSeriesWhereInput>;
+  NOT?: Maybe<UserSeriesWhereInput[] | UserSeriesWhereInput>;
 }
 
 export interface UserWhereInput {
@@ -493,6 +542,10 @@ export interface UserWhereInput {
   OR?: Maybe<UserWhereInput[] | UserWhereInput>;
   NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
 }
+
+export type UserSeriesWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
 export type WatchedEpisodeWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
@@ -812,23 +865,41 @@ export interface SeriesUpdateManyMutationInput {
 export interface UserCreateInput {
   id?: Maybe<ID_Input>;
   name: String;
-  watched?: Maybe<WatchedEpisodeCreateManyWithoutUserInput>;
+  watched?: Maybe<WatchedEpisodeCreateManyInput>;
 }
 
-export interface WatchedEpisodeCreateManyWithoutUserInput {
-  create?: Maybe<
-    | WatchedEpisodeCreateWithoutUserInput[]
-    | WatchedEpisodeCreateWithoutUserInput
-  >;
+export interface WatchedEpisodeCreateManyInput {
+  create?: Maybe<WatchedEpisodeCreateInput[] | WatchedEpisodeCreateInput>;
   connect?: Maybe<
     WatchedEpisodeWhereUniqueInput[] | WatchedEpisodeWhereUniqueInput
   >;
 }
 
-export interface WatchedEpisodeCreateWithoutUserInput {
+export interface WatchedEpisodeCreateInput {
   id?: Maybe<ID_Input>;
+  userSeries: UserSeriesCreateOneInput;
   episode: EpisodeCreateOneInput;
-  watched?: Maybe<Boolean>;
+}
+
+export interface UserSeriesCreateOneInput {
+  create?: Maybe<UserSeriesCreateInput>;
+  connect?: Maybe<UserSeriesWhereUniqueInput>;
+}
+
+export interface UserSeriesCreateInput {
+  id?: Maybe<ID_Input>;
+  user: UserCreateOneInput;
+  series: SeriesCreateOneInput;
+}
+
+export interface UserCreateOneInput {
+  create?: Maybe<UserCreateInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface SeriesCreateOneInput {
+  create?: Maybe<SeriesCreateInput>;
+  connect?: Maybe<SeriesWhereUniqueInput>;
 }
 
 export interface EpisodeCreateOneInput {
@@ -838,13 +909,18 @@ export interface EpisodeCreateOneInput {
 
 export interface UserUpdateInput {
   name?: Maybe<String>;
-  watched?: Maybe<WatchedEpisodeUpdateManyWithoutUserInput>;
+  watched?: Maybe<WatchedEpisodeUpdateManyInput>;
 }
 
-export interface WatchedEpisodeUpdateManyWithoutUserInput {
-  create?: Maybe<
-    | WatchedEpisodeCreateWithoutUserInput[]
-    | WatchedEpisodeCreateWithoutUserInput
+export interface WatchedEpisodeUpdateManyInput {
+  create?: Maybe<WatchedEpisodeCreateInput[] | WatchedEpisodeCreateInput>;
+  update?: Maybe<
+    | WatchedEpisodeUpdateWithWhereUniqueNestedInput[]
+    | WatchedEpisodeUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | WatchedEpisodeUpsertWithWhereUniqueNestedInput[]
+    | WatchedEpisodeUpsertWithWhereUniqueNestedInput
   >;
   delete?: Maybe<
     WatchedEpisodeWhereUniqueInput[] | WatchedEpisodeWhereUniqueInput
@@ -858,31 +934,70 @@ export interface WatchedEpisodeUpdateManyWithoutUserInput {
   disconnect?: Maybe<
     WatchedEpisodeWhereUniqueInput[] | WatchedEpisodeWhereUniqueInput
   >;
-  update?: Maybe<
-    | WatchedEpisodeUpdateWithWhereUniqueWithoutUserInput[]
-    | WatchedEpisodeUpdateWithWhereUniqueWithoutUserInput
-  >;
-  upsert?: Maybe<
-    | WatchedEpisodeUpsertWithWhereUniqueWithoutUserInput[]
-    | WatchedEpisodeUpsertWithWhereUniqueWithoutUserInput
-  >;
   deleteMany?: Maybe<
     WatchedEpisodeScalarWhereInput[] | WatchedEpisodeScalarWhereInput
   >;
-  updateMany?: Maybe<
-    | WatchedEpisodeUpdateManyWithWhereNestedInput[]
-    | WatchedEpisodeUpdateManyWithWhereNestedInput
-  >;
 }
 
-export interface WatchedEpisodeUpdateWithWhereUniqueWithoutUserInput {
+export interface WatchedEpisodeUpdateWithWhereUniqueNestedInput {
   where: WatchedEpisodeWhereUniqueInput;
-  data: WatchedEpisodeUpdateWithoutUserDataInput;
+  data: WatchedEpisodeUpdateDataInput;
 }
 
-export interface WatchedEpisodeUpdateWithoutUserDataInput {
+export interface WatchedEpisodeUpdateDataInput {
+  userSeries?: Maybe<UserSeriesUpdateOneRequiredInput>;
   episode?: Maybe<EpisodeUpdateOneRequiredInput>;
-  watched?: Maybe<Boolean>;
+}
+
+export interface UserSeriesUpdateOneRequiredInput {
+  create?: Maybe<UserSeriesCreateInput>;
+  update?: Maybe<UserSeriesUpdateDataInput>;
+  upsert?: Maybe<UserSeriesUpsertNestedInput>;
+  connect?: Maybe<UserSeriesWhereUniqueInput>;
+}
+
+export interface UserSeriesUpdateDataInput {
+  user?: Maybe<UserUpdateOneRequiredInput>;
+  series?: Maybe<SeriesUpdateOneRequiredInput>;
+}
+
+export interface UserUpdateOneRequiredInput {
+  create?: Maybe<UserCreateInput>;
+  update?: Maybe<UserUpdateDataInput>;
+  upsert?: Maybe<UserUpsertNestedInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserUpdateDataInput {
+  name?: Maybe<String>;
+  watched?: Maybe<WatchedEpisodeUpdateManyInput>;
+}
+
+export interface UserUpsertNestedInput {
+  update: UserUpdateDataInput;
+  create: UserCreateInput;
+}
+
+export interface SeriesUpdateOneRequiredInput {
+  create?: Maybe<SeriesCreateInput>;
+  update?: Maybe<SeriesUpdateDataInput>;
+  upsert?: Maybe<SeriesUpsertNestedInput>;
+  connect?: Maybe<SeriesWhereUniqueInput>;
+}
+
+export interface SeriesUpdateDataInput {
+  name?: Maybe<String>;
+  seasons?: Maybe<SeasonUpdateManyWithoutSeriesInput>;
+}
+
+export interface SeriesUpsertNestedInput {
+  update: SeriesUpdateDataInput;
+  create: SeriesCreateInput;
+}
+
+export interface UserSeriesUpsertNestedInput {
+  update: UserSeriesUpdateDataInput;
+  create: UserSeriesCreateInput;
 }
 
 export interface EpisodeUpdateOneRequiredInput {
@@ -904,10 +1019,10 @@ export interface EpisodeUpsertNestedInput {
   create: EpisodeCreateInput;
 }
 
-export interface WatchedEpisodeUpsertWithWhereUniqueWithoutUserInput {
+export interface WatchedEpisodeUpsertWithWhereUniqueNestedInput {
   where: WatchedEpisodeWhereUniqueInput;
-  update: WatchedEpisodeUpdateWithoutUserDataInput;
-  create: WatchedEpisodeCreateWithoutUserInput;
+  update: WatchedEpisodeUpdateDataInput;
+  create: WatchedEpisodeCreateInput;
 }
 
 export interface WatchedEpisodeScalarWhereInput {
@@ -925,8 +1040,6 @@ export interface WatchedEpisodeScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  watched?: Maybe<Boolean>;
-  watched_not?: Maybe<Boolean>;
   AND?: Maybe<
     WatchedEpisodeScalarWhereInput[] | WatchedEpisodeScalarWhereInput
   >;
@@ -936,60 +1049,18 @@ export interface WatchedEpisodeScalarWhereInput {
   >;
 }
 
-export interface WatchedEpisodeUpdateManyWithWhereNestedInput {
-  where: WatchedEpisodeScalarWhereInput;
-  data: WatchedEpisodeUpdateManyDataInput;
-}
-
-export interface WatchedEpisodeUpdateManyDataInput {
-  watched?: Maybe<Boolean>;
-}
-
 export interface UserUpdateManyMutationInput {
   name?: Maybe<String>;
 }
 
-export interface WatchedEpisodeCreateInput {
-  id?: Maybe<ID_Input>;
-  episode: EpisodeCreateOneInput;
-  user: UserCreateOneWithoutWatchedInput;
-  watched?: Maybe<Boolean>;
-}
-
-export interface UserCreateOneWithoutWatchedInput {
-  create?: Maybe<UserCreateWithoutWatchedInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface UserCreateWithoutWatchedInput {
-  id?: Maybe<ID_Input>;
-  name: String;
+export interface UserSeriesUpdateInput {
+  user?: Maybe<UserUpdateOneRequiredInput>;
+  series?: Maybe<SeriesUpdateOneRequiredInput>;
 }
 
 export interface WatchedEpisodeUpdateInput {
+  userSeries?: Maybe<UserSeriesUpdateOneRequiredInput>;
   episode?: Maybe<EpisodeUpdateOneRequiredInput>;
-  user?: Maybe<UserUpdateOneRequiredWithoutWatchedInput>;
-  watched?: Maybe<Boolean>;
-}
-
-export interface UserUpdateOneRequiredWithoutWatchedInput {
-  create?: Maybe<UserCreateWithoutWatchedInput>;
-  update?: Maybe<UserUpdateWithoutWatchedDataInput>;
-  upsert?: Maybe<UserUpsertWithoutWatchedInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface UserUpdateWithoutWatchedDataInput {
-  name?: Maybe<String>;
-}
-
-export interface UserUpsertWithoutWatchedInput {
-  update: UserUpdateWithoutWatchedDataInput;
-  create: UserCreateWithoutWatchedInput;
-}
-
-export interface WatchedEpisodeUpdateManyMutationInput {
-  watched?: Maybe<Boolean>;
 }
 
 export interface EpisodeSubscriptionWhereInput {
@@ -1034,6 +1105,23 @@ export interface UserSubscriptionWhereInput {
   AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
   OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
   NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+}
+
+export interface UserSeriesSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<UserSeriesWhereInput>;
+  AND?: Maybe<
+    UserSeriesSubscriptionWhereInput[] | UserSeriesSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    UserSeriesSubscriptionWhereInput[] | UserSeriesSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    UserSeriesSubscriptionWhereInput[] | UserSeriesSubscriptionWhereInput
+  >;
 }
 
 export interface WatchedEpisodeSubscriptionWhereInput {
@@ -1438,34 +1526,56 @@ export interface UserNullablePromise
 
 export interface WatchedEpisode {
   id: ID_Output;
-  watched: Boolean;
 }
 
 export interface WatchedEpisodePromise
   extends Promise<WatchedEpisode>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  userSeries: <T = UserSeriesPromise>() => T;
   episode: <T = EpisodePromise>() => T;
-  user: <T = UserPromise>() => T;
-  watched: () => Promise<Boolean>;
 }
 
 export interface WatchedEpisodeSubscription
   extends Promise<AsyncIterator<WatchedEpisode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  userSeries: <T = UserSeriesSubscription>() => T;
   episode: <T = EpisodeSubscription>() => T;
-  user: <T = UserSubscription>() => T;
-  watched: () => Promise<AsyncIterator<Boolean>>;
 }
 
 export interface WatchedEpisodeNullablePromise
   extends Promise<WatchedEpisode | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  userSeries: <T = UserSeriesPromise>() => T;
   episode: <T = EpisodePromise>() => T;
+}
+
+export interface UserSeries {
+  id: ID_Output;
+}
+
+export interface UserSeriesPromise extends Promise<UserSeries>, Fragmentable {
+  id: () => Promise<ID_Output>;
   user: <T = UserPromise>() => T;
-  watched: () => Promise<Boolean>;
+  series: <T = SeriesPromise>() => T;
+}
+
+export interface UserSeriesSubscription
+  extends Promise<AsyncIterator<UserSeries>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  user: <T = UserSubscription>() => T;
+  series: <T = SeriesSubscription>() => T;
+}
+
+export interface UserSeriesNullablePromise
+  extends Promise<UserSeries | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  user: <T = UserPromise>() => T;
+  series: <T = SeriesPromise>() => T;
 }
 
 export interface UserConnection {
@@ -1518,6 +1628,62 @@ export interface AggregateUserPromise
 
 export interface AggregateUserSubscription
   extends Promise<AsyncIterator<AggregateUser>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface UserSeriesConnection {
+  pageInfo: PageInfo;
+  edges: UserSeriesEdge[];
+}
+
+export interface UserSeriesConnectionPromise
+  extends Promise<UserSeriesConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UserSeriesEdge>>() => T;
+  aggregate: <T = AggregateUserSeriesPromise>() => T;
+}
+
+export interface UserSeriesConnectionSubscription
+  extends Promise<AsyncIterator<UserSeriesConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<UserSeriesEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateUserSeriesSubscription>() => T;
+}
+
+export interface UserSeriesEdge {
+  node: UserSeries;
+  cursor: String;
+}
+
+export interface UserSeriesEdgePromise
+  extends Promise<UserSeriesEdge>,
+    Fragmentable {
+  node: <T = UserSeriesPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface UserSeriesEdgeSubscription
+  extends Promise<AsyncIterator<UserSeriesEdge>>,
+    Fragmentable {
+  node: <T = UserSeriesSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateUserSeries {
+  count: Int;
+}
+
+export interface AggregateUserSeriesPromise
+  extends Promise<AggregateUserSeries>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateUserSeriesSubscription
+  extends Promise<AsyncIterator<AggregateUserSeries>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
@@ -1776,6 +1942,47 @@ export interface UserPreviousValuesSubscription
   name: () => Promise<AsyncIterator<String>>;
 }
 
+export interface UserSeriesSubscriptionPayload {
+  mutation: MutationType;
+  node: UserSeries;
+  updatedFields: String[];
+  previousValues: UserSeriesPreviousValues;
+}
+
+export interface UserSeriesSubscriptionPayloadPromise
+  extends Promise<UserSeriesSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = UserSeriesPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = UserSeriesPreviousValuesPromise>() => T;
+}
+
+export interface UserSeriesSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<UserSeriesSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = UserSeriesSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = UserSeriesPreviousValuesSubscription>() => T;
+}
+
+export interface UserSeriesPreviousValues {
+  id: ID_Output;
+}
+
+export interface UserSeriesPreviousValuesPromise
+  extends Promise<UserSeriesPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+}
+
+export interface UserSeriesPreviousValuesSubscription
+  extends Promise<AsyncIterator<UserSeriesPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+}
+
 export interface WatchedEpisodeSubscriptionPayload {
   mutation: MutationType;
   node: WatchedEpisode;
@@ -1803,21 +2010,18 @@ export interface WatchedEpisodeSubscriptionPayloadSubscription
 
 export interface WatchedEpisodePreviousValues {
   id: ID_Output;
-  watched: Boolean;
 }
 
 export interface WatchedEpisodePreviousValuesPromise
   extends Promise<WatchedEpisodePreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  watched: () => Promise<Boolean>;
 }
 
 export interface WatchedEpisodePreviousValuesSubscription
   extends Promise<AsyncIterator<WatchedEpisodePreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  watched: () => Promise<AsyncIterator<Boolean>>;
 }
 
 /*
@@ -1864,6 +2068,10 @@ export const models: Model[] = [
   },
   {
     name: "WatchedEpisode",
+    embedded: false
+  },
+  {
+    name: "UserSeries",
     embedded: false
   },
   {

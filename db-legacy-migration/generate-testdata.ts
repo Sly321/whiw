@@ -1,4 +1,4 @@
-import { prisma, SeasonCreateWithoutSeriesInput, EpisodeCreateWithoutSeasonInput, Series, User } from './generated/prisma-client'
+import { prisma, SeasonCreateWithoutSeriesInput, EpisodeCreateWithoutSeasonInput, Series, User, UserSeries, UserSeriesPromise } from './generated/prisma-client'
 
 import db from "./exported/viewcachu-firebase-export.json"
 
@@ -43,7 +43,7 @@ async function createSeries(series: SeriesFirebase): Promise<Series> {
 	})
 }
 
-async function checkWatchedEpisodes({ seasons, id }: SeriesFirebase, user: User) {
+async function checkWatchedEpisodes({ seasons, id }: SeriesFirebase, userSeries: UserSeries) {
 	return new Promise(async (res) => {
 		if (Array.isArray(seasons)) {
 			for (const season of seasons) {
@@ -72,12 +72,11 @@ async function checkWatchedEpisodes({ seasons, id }: SeriesFirebase, user: User)
 										id: newEpi[0].id
 									}
 								},
-								user: {
+								userSeries: {
 									connect: {
-										id: user.id
+										id: userSeries.id
 									}
-								},
-								watched: episode.watched
+								}
 							})
 						} else {
 							console.log (`More than 1 Episode found: { seriesId: ${id}, season: ${season.seasonNumber}, episode: ${episode.episode} }`)
@@ -87,6 +86,13 @@ async function checkWatchedEpisodes({ seasons, id }: SeriesFirebase, user: User)
 			}
 		}	
 		res()
+	})
+}
+
+async function addSeriesToUserSeriesList(series: Series, user: User): Promise<UserSeries> {
+	return prisma.createUserSeries({
+		series: { connect: { id: series.id }},
+		user: { connect: { id: user.id }}
 	})
 }
 
@@ -103,13 +109,14 @@ async function main() {
 			return new Promise(async (res) => {
 
 				const legacySeries = legacyUser.series[key] as SeriesFirebase
-				const series = await prisma.series({ id: legacySeries.id })
+				let series = await prisma.series({ id: legacySeries.id })
 				
 				if (series === null) {
-					await createSeries(legacySeries)	
+					series = await createSeries(legacySeries)	
 				}
 
-				await checkWatchedEpisodes(legacySeries, prismaUser)
+				const userSeries = await addSeriesToUserSeriesList(series, prismaUser)
+				await checkWatchedEpisodes(legacySeries, userSeries)
 				
 				res()
 			})

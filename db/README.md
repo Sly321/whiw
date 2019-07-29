@@ -6,6 +6,30 @@
 - [docker](https://www.docker.com/)
 - [prisma](https://www.prisma.io) install with  `npm i -g prisma`
 
+## database model
+
+```mermaid
+classDiagram
+User *-- UserSeries
+User: id: ID
+User: name: String
+UserSeries: id: ID
+Series *-- UserSeries
+Series: id: ID
+Series : name: String
+Season --* Series
+Season: id: ID
+Season: number: Int
+Episode --* Season
+Episode: id: ID
+Episode: name: String
+Episode: number: Int
+Episode: release: DateTime
+WatchedEpisode --* User
+WatchedEpisode *-- Episode
+WatchedEpisode: id: ID
+```
+
 ## commands
 
 ### `docker-compose up -d`

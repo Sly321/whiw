@@ -4,7 +4,7 @@ endpoint: http://localhost:4466
 datamodel: datamodel.prisma
 generate:
   - generator: typescript-client
-    output: ../db-client/generated/prisma-client
+    output: ../db-legacy-migration/generated/prisma-client
 hooks:
   post-deploy:
-    - npx nexus-prisma-generate --client ../db-client/generated/prisma-client --output ../db-client/generated/nexus-prisma
+    - npx nexus-prisma-generate --client ../db-legacy-migration/generated/prisma-client --output ../db-legacy-migration/generated/nexus-prisma

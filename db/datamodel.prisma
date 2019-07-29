@@ -6,9 +6,14 @@ type User {
 
 type WatchedEpisode {
   id: ID! @id
+  userSeries: UserSeries! @relation(link: INLINE)
   episode: Episode!
+}
+
+type UserSeries {
+  id: ID! @id
   user: User! @relation(link: INLINE)
-  watched: Boolean! @default(value: false)
+  series: Series! @relation(link: INLINE)
 }
 
 type Episode {

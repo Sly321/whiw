@@ -1,7 +1,6 @@
 type User {
   id: ID! @id
   name: String!
-  watched: [WatchedEpisode!]!
 }
 
 type WatchedEpisode {

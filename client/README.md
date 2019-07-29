@@ -10,7 +10,7 @@ query {
   }
 }
 ```
-    aggregate {count}
+
 
 ```` graphql
 query {

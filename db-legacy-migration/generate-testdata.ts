@@ -99,6 +99,7 @@ async function addSeriesToUserSeriesList(series: Series, user: User): Promise<Us
 // A `main` function so that we can use async/await
 async function main() {
 	const keys = Object.keys((db as any).users)
+	const totalSeries: number = keys.reduce((prev, key)  => prev + (db["users"][key] as UserFirebase).series.length, 0)
 
 	for (const key of keys) {
 		const legacyUser = db["users"][key] as UserFirebase

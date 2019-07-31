@@ -735,7 +735,6 @@ type Subscription {
 type User {
   id: ID!
   name: String!
-  watched(where: WatchedEpisodeWhereInput, orderBy: WatchedEpisodeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [WatchedEpisode!]
 }
 
 type UserConnection {
@@ -747,7 +746,6 @@ type UserConnection {
 input UserCreateInput {
   id: ID
   name: String!
-  watched: WatchedEpisodeCreateManyInput
 }
 
 input UserCreateOneInput {
@@ -895,12 +893,10 @@ input UserSubscriptionWhereInput {
 
 input UserUpdateDataInput {
   name: String
-  watched: WatchedEpisodeUpdateManyInput
 }
 
 input UserUpdateInput {
   name: String
-  watched: WatchedEpisodeUpdateManyInput
 }
 
 input UserUpdateManyMutationInput {
@@ -948,9 +944,6 @@ input UserWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
-  watched_every: WatchedEpisodeWhereInput
-  watched_some: WatchedEpisodeWhereInput
-  watched_none: WatchedEpisodeWhereInput
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]
@@ -978,11 +971,6 @@ input WatchedEpisodeCreateInput {
   episode: EpisodeCreateOneInput!
 }
 
-input WatchedEpisodeCreateManyInput {
-  create: [WatchedEpisodeCreateInput!]
-  connect: [WatchedEpisodeWhereUniqueInput!]
-}
-
 type WatchedEpisodeEdge {
   node: WatchedEpisode!
   cursor: String!
@@ -995,26 +983,6 @@ enum WatchedEpisodeOrderByInput {
 
 type WatchedEpisodePreviousValues {
   id: ID!
-}
-
-input WatchedEpisodeScalarWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
-  AND: [WatchedEpisodeScalarWhereInput!]
-  OR: [WatchedEpisodeScalarWhereInput!]
-  NOT: [WatchedEpisodeScalarWhereInput!]
 }
 
 type WatchedEpisodeSubscriptionPayload {
@@ -1035,36 +1003,9 @@ input WatchedEpisodeSubscriptionWhereInput {
   NOT: [WatchedEpisodeSubscriptionWhereInput!]
 }
 
-input WatchedEpisodeUpdateDataInput {
-  userSeries: UserSeriesUpdateOneRequiredInput
-  episode: EpisodeUpdateOneRequiredInput
-}
-
 input WatchedEpisodeUpdateInput {
   userSeries: UserSeriesUpdateOneRequiredInput
   episode: EpisodeUpdateOneRequiredInput
-}
-
-input WatchedEpisodeUpdateManyInput {
-  create: [WatchedEpisodeCreateInput!]
-  update: [WatchedEpisodeUpdateWithWhereUniqueNestedInput!]
-  upsert: [WatchedEpisodeUpsertWithWhereUniqueNestedInput!]
-  delete: [WatchedEpisodeWhereUniqueInput!]
-  connect: [WatchedEpisodeWhereUniqueInput!]
-  set: [WatchedEpisodeWhereUniqueInput!]
-  disconnect: [WatchedEpisodeWhereUniqueInput!]
-  deleteMany: [WatchedEpisodeScalarWhereInput!]
-}
-
-input WatchedEpisodeUpdateWithWhereUniqueNestedInput {
-  where: WatchedEpisodeWhereUniqueInput!
-  data: WatchedEpisodeUpdateDataInput!
-}
-
-input WatchedEpisodeUpsertWithWhereUniqueNestedInput {
-  where: WatchedEpisodeWhereUniqueInput!
-  update: WatchedEpisodeUpdateDataInput!
-  create: WatchedEpisodeCreateInput!
 }
 
 input WatchedEpisodeWhereInput {

@@ -1,8 +1,8 @@
 import { prisma, SeasonCreateWithoutSeriesInput, EpisodeCreateWithoutSeasonInput, Series, User, UserSeries, UserSeriesPromise } from './generated/prisma-client'
-
-import db from "./exported/viewcachu-firebase-export.json"
-
 import { SeriesFirebase, EpisodeFirebase, SeasonFirebase, UserFirebase } from './legacy/types'
+import db from "./exported/viewcachu-firebase-export.json"
+import { Box, Color, render } from "ink"
+import React, { useEffect, useState, useMemo } from "react"
 
 function createEpisodes(episodes: Array<EpisodeFirebase>) {
 	if (!Array.isArray(episodes)) {
@@ -96,72 +96,48 @@ async function addSeriesToUserSeriesList(series: Series, user: User): Promise<Us
 	})
 }
 
-// A `main` function so that we can use async/await
-async function main() {
+function Migration() {
+	let [currentSeries, setCurrentSeries] = useState(0)
+
 	const keys = Object.keys((db as any).users)
-	const totalSeries: number = keys.reduce((prev, key)  => prev + (db["users"][key] as UserFirebase).series.length, 0)
+	const totalSeries: number = useMemo(() => keys.reduce((prev, key) => {
+		const { series } = (db["users"][key] as UserFirebase)
+		return prev + Object.keys(series).length
+	}, 0)
+	, [db, keys])
 
-	for (const key of keys) {
-		const legacyUser = db["users"][key] as UserFirebase
-		const prismaUser = await prisma.createUser({ name: legacyUser.name })
-		console.log("Creating User: ", prismaUser.name)
+	useEffect(() => {
+		(async () => {
+			for (const key of keys) {
+				const legacyUser = db["users"][key] as UserFirebase
+				const prismaUser = await prisma.createUser({ name: legacyUser.name })
+				console.log("Creating User: ", prismaUser.name)
+		
+				await Promise.all(Object.keys(legacyUser.series).map((key) => {
+					return new Promise(async (res) => {
+						
+						const legacySeries = legacyUser.series[key] as SeriesFirebase
+						let series = await prisma.series({ id: legacySeries.id })
+						
+						if (series === null) {
+							series = await createSeries(legacySeries)	
+						}
+						
+						const userSeries = await addSeriesToUserSeriesList(series, prismaUser)
+						await checkWatchedEpisodes(legacySeries, userSeries)
+						setCurrentSeries(currentSeries++)
+						
+						res()
+					})
+				}))
+			}
+		
+			const allUsers = await prisma.users()
+			console.log(allUsers)
+		})()
+	}, [db])
 
-		await Promise.all(Object.keys(legacyUser.series).map((key) => {
-			return new Promise(async (res) => {
-
-				const legacySeries = legacyUser.series[key] as SeriesFirebase
-				let series = await prisma.series({ id: legacySeries.id })
-				
-				if (series === null) {
-					series = await createSeries(legacySeries)	
-				}
-
-				const userSeries = await addSeriesToUserSeriesList(series, prismaUser)
-				await checkWatchedEpisodes(legacySeries, userSeries)
-				
-				res()
-			})
-		}))
-	}
-
-	
-
-//   const series = await prisma.createSeries({
-//     seasons: { 
-//       create: singleSeries.seasons.map<SeasonCreateWithoutSeriesInput>(season => {
-// 			return {
-// 				number: season.seasonNumber.toString(),
-// 				episodes: {
-// 					create: season.episodes.map<EpisodeCreateWithoutSeasonInput>(({ name }) => {
-// 						return {
-// 							name: name
-// 						}
-// 					})
-// 				}
-// 			}
-// 		})
-// 	  },
-//   })
-
-//   const seriesGet = await prisma.episodes({ where: { season: { series: { id: series.id }}}})
-
-//   const watched = await prisma.createWatchedEpisode({
-// 	  episode: {
-// 		  connect: {
-// 			  id: seriesGet[0].id
-// 		  }
-// 	  },
-// 	  user: {
-// 		  connect: {
-// 			  id: user.id
-// 		  }
-// 	  },
-// 	  watched: true
-//   })
-
-  // Read all users from the database and print them to the console
-  const allUsers = await prisma.users()
-  console.log(allUsers)
+	return <Box>Migrated: {currentSeries}/{totalSeries} Series</Box>
 }
 
-main().catch(e => console.error(e))
+render(<Migration />)

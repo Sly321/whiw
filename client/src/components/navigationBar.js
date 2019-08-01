@@ -30,7 +30,6 @@ customElements.define('navigation-bar', class extends HTMLElement {
 			height: 100%;
 			margin: 0;
 			padding: 0;
-			flex: auto;
 		}
 
 		navigation-widget-container:first-child ul {
